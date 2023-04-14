@@ -1,17 +1,27 @@
 <div class="vaarn-character">
-  <div class="vaarn-bio">
-    <label>Name:       <input type="text" name="attr_name"/></label>
-    <label>Ancestry:   <input type="text" name="attr_ancestry"/></label>
-    <label>Bio:        <textarea name="attr_bio"/></label>
 
-    <label>name:       <input type="text" name="attr_name"/></label>
+  <div class="bio">
+    <label>Name:</label><input type="text" name="attr_name"/><br>
+
+    <label>Ancestry:</label>
+    <select type="text" name="attr_ancestry">
+      <option value="truekin">True-Kin</option>
+      <option value="synth">Synth</option>
+      <option value="newbeast">Newbeast</option>
+      <option value="mycomorph">Mycomorph</option>
+      <option value="cacogen">Cacogen</option>
+    </select><br>
+
+    <textarea name="attr_specialrules" readonly></textarea><br>
+
+    <label>Bio:        <textarea name="attr_bio" rows=3></textarea></label>
+
     <label>hp_cur:       <input type="number" hp_cur="attr_hp_cur"/></label>
     <label>hp_max:       <input type="number" hp_max="attr_hp_max"/></label>
     <label>level:       <input type="number" level="attr_level"/></label>
     <label>xp:       <input type="number" xp="attr_xp"/></label>
-    <label>name:       <input type="text" name="attr_name"/></label>
-    <label>name:       <input type="text" name="attr_name"/></label>
   </div>
+
   <div class="vaarn-stats">
     <div class="stat">
       <label>STR</label>
@@ -57,7 +67,27 @@
   </div>
 
   <div class="vaarn-gear">
+    Gear
   </div>
 </div>
 
-</div>
+
+<script type="text/worker">
+  let specialrules_map = {
+    "truekin": "truekin rules",
+    "synth": "synth rules",
+    "newbeast": "newbeast rules",
+    "mycomorph": "mycomorph rules",
+    "cacogen": "cacogen rules",
+  };
+
+  on("change:ancestry sheet:opened", function() {
+    getAttrs(["ancestry"], function(values) {
+      let ancestry = values.ancestry;
+      let specialrules = specialrules_map[ancestry];
+      setAttrs({
+        "specialrules": specialrules
+      });
+    });
+  });
+</script>

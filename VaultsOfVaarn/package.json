@@ -1,0 +1,22 @@
+{
+  "name": "maverick-core-character-sheets",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "sass": "^1.58.3"
+  },
+  "scripts": {
+    "sass": "sass --watch scss:css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/birds-inc/maverick-core-character-sheets.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/birds-inc/maverick-core-character-sheets/issues"
+  },
+  "homepage": "https://github.com/birds-inc/maverick-core-character-sheets#readme"
+}

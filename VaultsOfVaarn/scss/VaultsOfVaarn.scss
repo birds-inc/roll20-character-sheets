@@ -1,0 +1,22 @@
+$total-width: 650px;
+$half-width: calc($total-width / 2);
+$third-width: calc($total-width / 2);
+
+$label-width: 80px;
+
+div {
+  border: 1px solid black;
+}
+
+div.sheet-vaarn-character {
+  width: $total-width;
+
+  label {
+    display: inline-block;
+    width: $label-width;
+  }
+
+  div.sheet-bio {
+    width: $half-width;
+  }
+}

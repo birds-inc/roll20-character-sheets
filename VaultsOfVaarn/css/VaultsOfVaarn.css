@@ -1,0 +1,16 @@
+div {
+  border: 1px solid black;
+}
+
+div.sheet-vaarn-character {
+  width: 650px;
+}
+div.sheet-vaarn-character label {
+  display: inline-block;
+  width: 80px;
+}
+div.sheet-vaarn-character div.sheet-bio {
+  width: 325px;
+}
+
+/*# sourceMappingURL=VaultsOfVaarn.css.map */
