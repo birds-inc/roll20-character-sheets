@@ -17,11 +17,12 @@
   
   <div class="bio">
     <label>HP:</label><input type="number" hp_cur="attr_hp_cur"/>
-    <label>HP MAX:</label><input type="number" hp_max="attr_hp_max"/>
+    <span class="spacer">&nbsp;</span>
+    <label>XP:</label><input type="number" xp="attr_xp"/>
     <br/>
 
-    <label>XP:</label><input type="number" xp="attr_xp"/>
-    &nbsp;
+    <label>MAX:</label><input type="number" hp_max="attr_hp_max"/>
+    <span class="spacer">&nbsp;</span>
     <label>LEVEL:</label><input type="number" level="attr_level"/>
     <br/>
 
@@ -31,52 +32,52 @@
   <div class="clear"></div>
 
   <div class="labels">
-    <label>DEF:</label></br>
     <label>&nbsp;</label></br>
-    <label>BONUS:</label></br>
-    <label>CYBERNETIC:</label></br>
+    <label>DEF</label></br>
+    <label>BONUS</label></br>
+    <label class="small">CYBERNETIC</label>
   </div>
 
   <div class="stat">
-    <input type="number" name="attr_str_def"/><br/>
     <label>STR</label><br/>
-    <input type="number" name="attr_str_bonus"/><br/>
-    <input type="text" name="attr_str_cybernetic"/>
+    <input type="number" min="3" max="20" name="attr_str_def"/><br/>
+    <input type="number" min="1" max="10" name="attr_str_bonus"/><br/>
+    <textarea name="attr_str_cybernetic"></textarea>
   </div>
 
   <div class="stat">
-    <input type="number" name="attr_dex_def"/><br/>
     <label>DEX</label><br/>
-    <input type="number" name="attr_dex_bonus"/><br/>
-    <input type="text" name="attr_dex_cybernetic"/>
+    <input type="number" min="3" max="20" name="attr_dex_def"/><br/>
+    <input type="number" min="1" max="10" name="attr_dex_bonus"/><br/>
+    <textarea name="attr_dex_cybernetic"></textarea>
   </div>
 
   <div class="stat">
-    <input type="number" name="attr_con_def"/><br/>
     <label>CON</label><br/>
-    <input type="number" name="attr_con_bonus"/><br/>
-    <input type="text" name="attr_con_cybernetic"/>
+    <input type="number" min="3" max="20" name="attr_con_def"/><br/>
+    <input type="number" min="1" max="10" name="attr_con_bonus"/><br/>
+    <textarea name="attr_con_cybernetic"></textarea>
   </div>
 
   <div class="stat">
-    <input type="number" name="attr_int_def"/><br/>
     <label>INT</label><br/>
-    <input type="number" name="attr_int_bonus"/><br/>
-    <input type="text" name="attr_int_cybernetic"/>
+    <input type="number" min="3" max="20" name="attr_int_def"/><br/>
+    <input type="number" min="1" max="10" name="attr_int_bonus"/><br/>
+    <textarea name="attr_int_cybernetic"></textarea>
   </div>
 
   <div class="stat">
-    <input type="number" name="attr_psy_def"/><br/>
     <label>PSY</label><br/>
-    <input type="number" name="attr_psy_bonus"/><br/>
-    <input type="text" name="attr_psy_cybernetic"/>
+    <input type="number" min="3" max="20" name="attr_psy_def"/><br/>
+    <input type="number" min="1" max="10" name="attr_psy_bonus"/><br/>
+    <textarea name="attr_psy_cybernetic"></textarea>
   </div>
 
   <div class="stat">
-    <input type="number" name="attr_ego_def"/><br/>
     <label>EGO</label><br/>
-    <input type="number" name="attr_ego_bonus"/><br/>
-    <input type="text" name="attr_ego_cybernetic"/>
+    <input type="number" min="3" max="20" name="attr_ego_def"/><br/>
+    <input type="number" min="1" max="10" name="attr_ego_bonus"/><br/>
+    <textarea name="attr_ego_cybernetic"></textarea>
   </div>
 
   <div class="clear"></div>

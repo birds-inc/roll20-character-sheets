@@ -1,3 +1,7 @@
+div, input, select, textarea {
+  box-sizing: border-box;
+}
+
 div {
   border: 1px solid black;
 }
@@ -7,27 +11,34 @@ input, select, textarea {
   padding: 2px;
 }
 
-label {
-  height: 24px;
-}
-
-input {
-  height: 18px;
-}
-
-select {
-  height: 24px;
+textarea {
+  vertical-align: top;
+  min-height: 24px !important;
+  height: 24px !important;
+  resize: vertical;
+  margin-bottom: 5px;
 }
 
 label, input, select {
   vertical-align: top;
-  line-height: 24px;
+  height: 24px !important;
+  line-height: 24px !important;
   margin-bottom: 5px;
+}
+
+body.sheet-darkmode label {
+  color: rgb(32, 88, 141);
 }
 
 label {
   font-size: 15px;
   color: rgb(32, 88, 141);
+  padding: 0;
+  text-align: center;
+}
+
+label.sheet-small {
+  font-size: 13px;
 }
 
 .sheet-clear {
@@ -40,32 +51,55 @@ div.sheet-vaarn-character {
 }
 div.sheet-vaarn-character div {
   padding: 5px;
+  text-align: center;
 }
 div.sheet-vaarn-character label {
   display: inline-block;
-  width: 85px;
+  width: 95px;
 }
 div.sheet-vaarn-character textarea {
-  width: 382px;
+  width: 387px;
 }
 div.sheet-vaarn-character input[type=number] {
   width: 45px;
 }
 div.sheet-vaarn-character div.sheet-basics {
   float: left;
-  width: 388px;
+  width: 399px;
+}
+div.sheet-vaarn-character div.sheet-basics label {
+  width: 95px;
+}
+div.sheet-vaarn-character div.sheet-basics input[type=text] {
+  width: 292px;
+}
+div.sheet-vaarn-character div.sheet-basics select {
+  width: 287px;
 }
 div.sheet-vaarn-character div.sheet-bio {
   float: left;
-  width: 388px;
+  width: 399px;
+}
+div.sheet-vaarn-character div.sheet-bio label {
+  width: 60px;
+}
+div.sheet-vaarn-character div.sheet-bio span.sheet-spacer {
+  display: inline-block;
+  width: 60px;
 }
 div.sheet-vaarn-character div.sheet-labels {
   float: left;
-  width: 85px;
+  width: 112px;
+}
+div.sheet-vaarn-character div.sheet-labels label {
+  width: 100px;
 }
 div.sheet-vaarn-character div.sheet-stat {
   float: left;
-  width: 105.1666666667px;
+  width: 113.6666666667px;
+}
+div.sheet-vaarn-character div.sheet-stat input, div.sheet-vaarn-character div.sheet-stat textarea {
+  width: 101.6666666667px;
 }
 
 /*# sourceMappingURL=VaultsOfVaarn.css.map */
