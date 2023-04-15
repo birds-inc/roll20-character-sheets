@@ -1,9 +1,9 @@
 <div class="vaarn-character">
 
   <div class="basics">
-    <label>Name:</label><input type="text" name="attr_name"/><br/>
+    <label>NAME:</label><input type="text" name="attr_name"/><br/>
 
-    <label>Ancestry:</label>
+    <label>ANCESTRY:</label>
     <select type="text" name="attr_ancestry">
       <option value="truekin">True-Kin</option>
       <option value="synth">Synth</option>
@@ -17,13 +17,12 @@
   
   <div class="bio">
     <label>HP:</label><input type="number" hp_cur="attr_hp_cur"/>
-    /
-    <label>Max:</label><input type="number" hp_max="attr_hp_max"/>
+    <label>HP MAX:</label><input type="number" hp_max="attr_hp_max"/>
     <br/>
 
     <label>XP:</label><input type="number" xp="attr_xp"/>
     &nbsp;
-    <label>Level:</label><input type="number" level="attr_level"/>
+    <label>LEVEL:</label><input type="number" level="attr_level"/>
     <br/>
 
     <textarea name="attr_bio" rows=3>bio</textarea>
@@ -31,52 +30,59 @@
 
   <div class="clear"></div>
 
-  <div class="vaarn-stats">
-    <div class="stat">
-      <label>STR</label>
-      <label>def:        <input type="number" name="attr_str_def"/></label>
-      <label>bonus:      <input type="number" name="attr_str_bonus"/></label>
-      <label>cybernetic: <input type="text" name="attr_str_cybernetic"/></label>
-    </div>
-
-    <div class="stat">
-      <label>DEX</label>
-      <label>def:        <input type="number" name="attr_dex_def"/></label>
-      <label>bonus:      <input type="number" name="attr_dex_bonus"/></label>
-      <label>cybernetic: <input type="text" name="attr_dex_cybernetic"/></label>
-    </div>
-
-    <div class="stat">
-      <label>CON</label>
-      <label>def:        <input type="number" name="attr_con_def"/></label>
-      <label>bonus:      <input type="number" name="attr_con_bonus"/></label>
-      <label>cybernetic: <input type="text" name="attr_con_cybernetic"/></label>
-    </div>
-
-    <div class="stat">
-      <label>INT</label>
-      <label>def:        <input type="number" name="attr_int_def"/></label>
-      <label>bonus:      <input type="number" name="attr_int_bonus"/></label>
-      <label>cybernetic: <input type="text" name="attr_int_cybernetic"/></label>
-    </div>
-
-    <div class="stat">
-      <label>PSY</label>
-      <label>def:        <input type="number" name="attr_psy_def"/></label>
-      <label>bonus:      <input type="number" name="attr_psy_bonus"/></label>
-      <label>cybernetic: <input type="text" name="attr_psy_cybernetic"/></label>
-    </div>
-
-    <div class="stat">
-      <label>EGO</label>
-      <label>def:        <input type="number" name="attr_ego_def"/></label>
-      <label>bonus:      <input type="number" name="attr_ego_bonus"/></label>
-      <label>cybernetic: <input type="text" name="attr_ego_cybernetic"/></label>
-    </div>
+  <div class="labels">
+    <label>DEF:</label></br>
+    <label>&nbsp;</label></br>
+    <label>BONUS:</label></br>
+    <label>CYBERNETIC:</label></br>
   </div>
 
+  <div class="stat">
+    <input type="number" name="attr_str_def"/><br/>
+    <label>STR</label><br/>
+    <input type="number" name="attr_str_bonus"/><br/>
+    <input type="text" name="attr_str_cybernetic"/>
+  </div>
+
+  <div class="stat">
+    <input type="number" name="attr_dex_def"/><br/>
+    <label>DEX</label><br/>
+    <input type="number" name="attr_dex_bonus"/><br/>
+    <input type="text" name="attr_dex_cybernetic"/>
+  </div>
+
+  <div class="stat">
+    <input type="number" name="attr_con_def"/><br/>
+    <label>CON</label><br/>
+    <input type="number" name="attr_con_bonus"/><br/>
+    <input type="text" name="attr_con_cybernetic"/>
+  </div>
+
+  <div class="stat">
+    <input type="number" name="attr_int_def"/><br/>
+    <label>INT</label><br/>
+    <input type="number" name="attr_int_bonus"/><br/>
+    <input type="text" name="attr_int_cybernetic"/>
+  </div>
+
+  <div class="stat">
+    <input type="number" name="attr_psy_def"/><br/>
+    <label>PSY</label><br/>
+    <input type="number" name="attr_psy_bonus"/><br/>
+    <input type="text" name="attr_psy_cybernetic"/>
+  </div>
+
+  <div class="stat">
+    <input type="number" name="attr_ego_def"/><br/>
+    <label>EGO</label><br/>
+    <input type="number" name="attr_ego_bonus"/><br/>
+    <input type="text" name="attr_ego_cybernetic"/>
+  </div>
+
+  <div class="clear"></div>
+
   <div class="vaarn-gear">
-    Gear
+    <label>GEAR</label>
   </div>
 </div>
 

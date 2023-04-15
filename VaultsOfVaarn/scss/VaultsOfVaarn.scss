@@ -1,30 +1,46 @@
 $total-width: 800px;
 
-$div-border-width: 0px;
+$div-border-width: 1px;
 $div-padding: 5px;
-$div-half-width: calc($total-width / 2) - calc($div-border-width * 2) - calc($div-padding * 2);
+$div-extra-width: calc($div-border-width * 2) + calc($div-padding * 2);
+$div-half-width: calc($total-width / 2) - $div-extra-width;
 
-$textarea-border-width: 1px;
-$textarea-padding: 2px;
-$textarea-half-width: $div-half-width - calc($textarea-border-width * 2) - calc($textarea-padding * 2);
+$input-border-width: 1px;
+$input-padding: 2px;
+$input-half-width: $div-half-width - calc($input-border-width * 2) - calc($input-padding * 2);
 
-$label-width: 70px;
+$label-width: 85px;
 $input-number-width: 45px;
 
-$line-height: 18px;
+$div-labels-width: $label-width + $div-extra-width;
+$div-stats-width: calc(($total-width - $div-labels-width) / 6) - $div-extra-width;
+
+$input-height: 18px;
+$label-height: $input-height + calc($input-border-width * 2) + calc($input-padding * 2);
+$line-height: $label-height;
+$line-margin-bottom: 5px;
+
+$label-font-size: 15px;
+$vaarn-blue: rgb(32,88,141);
 
 div {
   border: $div-border-width solid black;
 }
 
-textarea {
-  border: 1px solid light-gray;
+input, select, textarea {
+  border: $input-border-width solid gray;
+  padding: $input-padding;
 }
 
-label, input, select { line-height: $line-height; }
+label { height: $label-height; }
+input { height: $input-height; }
+select { height: $label-height; }
 
-select {
-  margin: 0;
+label, input, select { vertical-align: top; line-height: $line-height; margin-bottom: $line-margin-bottom; }
+
+label { 
+  font-size: $label-font-size;
+  color: $vaarn-blue;
 }
 
 .sheet-clear {
@@ -35,11 +51,14 @@ select {
 div.sheet-vaarn-character {
   width: $total-width;
 
-  label { display: inline-block; width: $label-width; }
-  textarea { width: $textarea-half-width; }
   div { padding: $div-padding; }
+  label { display: inline-block; width: $label-width; }
+  textarea { width: $input-half-width; }
   input[type="number"] { width: $input-number-width; }
 
   div.sheet-basics { float: left; width: $div-half-width; }
   div.sheet-bio    { float: left; width: $div-half-width; }
+
+  div.sheet-labels { float: left; width: $label-width; }
+  div.sheet-stat { float: left; width: $div-stats-width; }
 }
