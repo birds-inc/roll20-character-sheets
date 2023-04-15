@@ -1,22 +1,45 @@
-$total-width: 650px;
-$half-width: calc($total-width / 2);
-$third-width: calc($total-width / 2);
+$total-width: 800px;
 
-$label-width: 80px;
+$div-border-width: 0px;
+$div-padding: 5px;
+$div-half-width: calc($total-width / 2) - calc($div-border-width * 2) - calc($div-padding * 2);
+
+$textarea-border-width: 1px;
+$textarea-padding: 2px;
+$textarea-half-width: $div-half-width - calc($textarea-border-width * 2) - calc($textarea-padding * 2);
+
+$label-width: 70px;
+$input-number-width: 45px;
+
+$line-height: 18px;
 
 div {
-  border: 1px solid black;
+  border: $div-border-width solid black;
+}
+
+textarea {
+  border: 1px solid light-gray;
+}
+
+label, input, select { line-height: $line-height; }
+
+select {
+  margin: 0;
+}
+
+.sheet-clear {
+  clear: both;  
+  height: 0;
 }
 
 div.sheet-vaarn-character {
   width: $total-width;
 
-  label {
-    display: inline-block;
-    width: $label-width;
-  }
+  label { display: inline-block; width: $label-width; }
+  textarea { width: $textarea-half-width; }
+  div { padding: $div-padding; }
+  input[type="number"] { width: $input-number-width; }
 
-  div.sheet-bio {
-    width: $half-width;
-  }
+  div.sheet-basics { float: left; width: $div-half-width; }
+  div.sheet-bio    { float: left; width: $div-half-width; }
 }

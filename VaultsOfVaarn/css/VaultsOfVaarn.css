@@ -1,16 +1,47 @@
 div {
-  border: 1px solid black;
+  border: 0px solid black;
+}
+
+textarea {
+  border: 1px solid light-gray;
+}
+
+label, input, select {
+  line-height: 18px;
+}
+
+select {
+  margin: 0;
+}
+
+.sheet-clear {
+  clear: both;
+  height: 0;
 }
 
 div.sheet-vaarn-character {
-  width: 650px;
+  width: 800px;
 }
 div.sheet-vaarn-character label {
   display: inline-block;
-  width: 80px;
+  width: 70px;
+}
+div.sheet-vaarn-character textarea {
+  width: 384px;
+}
+div.sheet-vaarn-character div {
+  padding: 5px;
+}
+div.sheet-vaarn-character input[type=number] {
+  width: 45px;
+}
+div.sheet-vaarn-character div.sheet-basics {
+  float: left;
+  width: 390px;
 }
 div.sheet-vaarn-character div.sheet-bio {
-  width: 325px;
+  float: left;
+  width: 390px;
 }
 
 /*# sourceMappingURL=VaultsOfVaarn.css.map */

@@ -1,7 +1,7 @@
 <div class="vaarn-character">
 
-  <div class="bio">
-    <label>Name:</label><input type="text" name="attr_name"/><br>
+  <div class="basics">
+    <label>Name:</label><input type="text" name="attr_name"/><br/>
 
     <label>Ancestry:</label>
     <select type="text" name="attr_ancestry">
@@ -10,17 +10,26 @@
       <option value="newbeast">Newbeast</option>
       <option value="mycomorph">Mycomorph</option>
       <option value="cacogen">Cacogen</option>
-    </select><br>
+    </select><br/>
 
     <textarea name="attr_specialrules" readonly></textarea><br>
-
-    <label>Bio:        <textarea name="attr_bio" rows=3></textarea></label>
-
-    <label>hp_cur:       <input type="number" hp_cur="attr_hp_cur"/></label>
-    <label>hp_max:       <input type="number" hp_max="attr_hp_max"/></label>
-    <label>level:       <input type="number" level="attr_level"/></label>
-    <label>xp:       <input type="number" xp="attr_xp"/></label>
   </div>
+  
+  <div class="bio">
+    <label>HP:</label><input type="number" hp_cur="attr_hp_cur"/>
+    /
+    <label>Max:</label><input type="number" hp_max="attr_hp_max"/>
+    <br/>
+
+    <label>XP:</label><input type="number" xp="attr_xp"/>
+    &nbsp;
+    <label>Level:</label><input type="number" level="attr_level"/>
+    <br/>
+
+    <textarea name="attr_bio" rows=3>bio</textarea>
+  </div>
+
+  <div class="clear"></div>
 
   <div class="vaarn-stats">
     <div class="stat">
