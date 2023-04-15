@@ -102,3 +102,41 @@ div.sheet-vaarn-character {
     input, textarea    { width: $stat-input-width; }
   }
 }
+
+
+// textarea autoexpand https://app.roll20.net/forum/post/882997/css-wizardry/?pageforid=5603982#post-5603982
+.sheet-auto-expand {
+  border: $input-border-width solid gray;
+	position: relative;
+	cursor: text;
+	word-wrap: break-word;
+  min-height: $line-height;
+  margin-bottom: $line-margin-bottom;
+}
+.sheet-auto-expand span {
+	visibility: hidden;
+	white-space: pre-wrap;
+	display: block;
+}
+.sheet-auto-expand textarea {
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+	resize: none;
+	height: 100% !important;
+	width: 100% !important;
+	display: block;
+	box-sizing: border-box;
+	background: transparent;
+	border: none;
+	border-radius: 0;
+	box-shadow: none;
+	color: inherit;
+	font: inherit;
+	letter-spacing: inherit;
+	padding: inherit;
+	text-align: inherit;
+	text-transform: inherit;
+}

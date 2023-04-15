@@ -102,4 +102,42 @@ div.sheet-vaarn-character div.sheet-stat input, div.sheet-vaarn-character div.sh
   width: 101.6666666667px;
 }
 
+.sheet-auto-expand {
+  border: 1px solid gray;
+  position: relative;
+  cursor: text;
+  word-wrap: break-word;
+  min-height: 24px;
+  margin-bottom: 5px;
+}
+
+.sheet-auto-expand span {
+  visibility: hidden;
+  white-space: pre-wrap;
+  display: block;
+}
+
+.sheet-auto-expand textarea {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  resize: none;
+  height: 100% !important;
+  width: 100% !important;
+  display: block;
+  box-sizing: border-box;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  padding: inherit;
+  text-align: inherit;
+  text-transform: inherit;
+}
+
 /*# sourceMappingURL=VaultsOfVaarn.css.map */
