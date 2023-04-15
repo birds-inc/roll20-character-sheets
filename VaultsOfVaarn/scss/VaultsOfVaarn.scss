@@ -1,12 +1,16 @@
+@import url('https://fonts.googleapis.com/css?family=Crimson+Text&display=swap');
+
 $total-width: 800px;
 
-$div-border-width: 1px;
+$div-border-width: 0px;
 $div-padding: 5px;
 $div-extra-width: calc($div-border-width * 2) + calc($div-padding * 2);
 $div-half-width: calc($total-width / 2) - 1px;
 
 $input-border-width: 1px;
 $input-padding: 2px;
+
+$header-label-width: $total-width - $div-extra-width - 1px;
 
 $basics-label-width: 95px;
 $input-number-width: 45px;
@@ -28,6 +32,8 @@ $line-margin-bottom: 5px;
 
 $label-font-size: 15px;
 $label-font-size-small: 13px;
+$label-font-size-large: 19px;
+$label-font-size-very-large: 22px;
 $vaarn-blue: rgb(32,88,141);
 
 div, input, select, textarea { box-sizing: border-box; }
@@ -61,12 +67,15 @@ body.sheet-darkmode label {
 }
 
 label { 
+  font-family: 'Crimson Text', Arial;
   font-size: $label-font-size;
   color: $vaarn-blue;
   padding: 0;
   text-align: center;
 }
-label.sheet-small { font-size: $label-font-size-small; }
+label.sheet-small      { font-size: $label-font-size-small; }
+label.sheet-large      { font-size: $label-font-size-large; }
+label.sheet-very-large { font-size: $label-font-size-very-large; }
 
 .sheet-clear {
   clear: both;  
@@ -80,6 +89,11 @@ div.sheet-vaarn-character {
   label { display: inline-block; width: $basics-label-width; }
   textarea { width: $input-half-width; }
   input[type="number"] { width: $input-number-width; }
+
+  div.sheet-header { width: $total-width; }
+  div.sheet-header {
+    label              { width: $header-label-width; }
+  }
 
   div.sheet-basics { float: left; width: $div-half-width; }
   div.sheet-basics {

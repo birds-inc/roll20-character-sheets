@@ -1,9 +1,10 @@
+@import url("https://fonts.googleapis.com/css?family=Crimson+Text&display=swap");
 div, input, select, textarea {
   box-sizing: border-box;
 }
 
 div {
-  border: 1px solid black;
+  border: 0px solid black;
 }
 
 input, select, textarea {
@@ -31,6 +32,7 @@ body.sheet-darkmode label {
 }
 
 label {
+  font-family: "Crimson Text", Arial;
   font-size: 15px;
   color: rgb(32, 88, 141);
   padding: 0;
@@ -39,6 +41,14 @@ label {
 
 label.sheet-small {
   font-size: 13px;
+}
+
+label.sheet-large {
+  font-size: 19px;
+}
+
+label.sheet-very-large {
+  font-size: 22px;
 }
 
 .sheet-clear {
@@ -58,10 +68,16 @@ div.sheet-vaarn-character label {
   width: 95px;
 }
 div.sheet-vaarn-character textarea {
-  width: 387px;
+  width: 389px;
 }
 div.sheet-vaarn-character input[type=number] {
   width: 45px;
+}
+div.sheet-vaarn-character div.sheet-header {
+  width: 800px;
+}
+div.sheet-vaarn-character div.sheet-header label {
+  width: 789px;
 }
 div.sheet-vaarn-character div.sheet-basics {
   float: left;
@@ -71,10 +87,10 @@ div.sheet-vaarn-character div.sheet-basics label {
   width: 95px;
 }
 div.sheet-vaarn-character div.sheet-basics input[type=text] {
-  width: 292px;
+  width: 294px;
 }
 div.sheet-vaarn-character div.sheet-basics select {
-  width: 287px;
+  width: 289px;
 }
 div.sheet-vaarn-character div.sheet-bio {
   float: left;
@@ -89,17 +105,17 @@ div.sheet-vaarn-character div.sheet-bio span.sheet-spacer {
 }
 div.sheet-vaarn-character div.sheet-labels {
   float: left;
-  width: 112px;
+  width: 110px;
 }
 div.sheet-vaarn-character div.sheet-labels label {
   width: 100px;
 }
 div.sheet-vaarn-character div.sheet-stat {
   float: left;
-  width: 113.6666666667px;
+  width: 114px;
 }
 div.sheet-vaarn-character div.sheet-stat input, div.sheet-vaarn-character div.sheet-stat textarea {
-  width: 101.6666666667px;
+  width: 104px;
 }
 
 .sheet-auto-expand {
