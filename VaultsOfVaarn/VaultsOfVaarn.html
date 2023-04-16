@@ -22,14 +22,14 @@
   </div>
   
   <div class="bio">
-    <label>HP:</label><input type="number" hp_cur="attr_hp_cur"/>
+    <label>HP:</label><input type="number" name="attr_hp_cur"/>
     <span class="spacer">&nbsp;</span>
-    <label>LEVEL:</label><input type="number" level="attr_level"/>
+    <label>LEVEL:</label><input type="number" name="attr_level"/>
     <br/>
 
-    <label>MAX:</label><input type="number" hp_max="attr_hp_max"/>
+    <label>MAX:</label><input type="number" name="attr_hp_max"/>
     <span class="spacer">&nbsp;</span>
-    <label>XP:</label><input type="number" xp="attr_xp"/>
+    <label>XP:</label><input type="number" name="attr_xp"/>
     <br/>
 
     <div class="sheet-auto-expand">
@@ -118,6 +118,7 @@
   </div>
 
   <div class="gear">
+    <input type="number" name="attr_gear_count" style="display: none;"></input>
     <fieldset class="repeating_gear">
       <label></label><input type="text" name="attr_gear_name"/><span class="spacer"><button disabled>&nbsp;</button><button disabled>&nbsp;</button></span>
     </fieldset>
@@ -140,6 +141,16 @@
       let specialrules = specialrules_map[ancestry];
       setAttrs({
         "specialrules": specialrules
+      });
+    });
+  });
+
+  on("change:repeating_gear sheet:opened", function() {
+    getSectionIDs("repeating_gear", function(ids) {
+      let count = ids.length;
+      log("new count: " + count);
+      setAttrs({
+        "gear_count": count
       });
     });
   });
