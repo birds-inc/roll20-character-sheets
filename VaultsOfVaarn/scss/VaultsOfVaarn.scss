@@ -10,6 +10,9 @@ $label-font-weight: 700;
 $textarea-font-size: 13px;
 
 $vaarn-blue: rgb(32,88,141);
+$encumbered-red: red;
+$input-background-gray: rgb(245, 245, 245);
+$background-white: rgb(255, 255, 255);
 
 $line-height: 24px;
 $textarea-line-height: 12px;
@@ -21,7 +24,6 @@ $div-extra-width: calc($div-border-width * 2) + calc($div-padding * 2);
 $div-half-width: calc($total-width / 2) - 1px;
 
 $input-border-width: 1px;
-$input-padding: 2px;
 
 $header-label-width: $total-width - $div-extra-width - 1px;
 
@@ -51,14 +53,15 @@ $item-modify-margin: 5px;
 $item-line-height: 10px;
 $item-slots-width: 60px;
 $item-slots-padding: 14px;
+$item-slots-padding-top: 2px;
+$item-type-width: 80px;
 $item-spacer-width: calc($line-height * 2) + calc($item-modify-margin * 2);
-$item-name-width: $total-width - $div-extra-width - $item-label-width - $item-spacer-width - $item-slots-width - $item-modify-margin - 1px;
+$item-name-width: $total-width - $div-extra-width - $item-label-width - $item-spacer-width - $item-slots-width - $item-modify-margin - $item-type-width - $item-modify-margin - 1px;
+
+
+// BASIC ELEMENT CONFIG
 
 div, input, select, textarea { box-sizing: border-box; }
-
-div {
-  border: $div-border-width solid black;
-}
 
 fieldset, div.repcontainer, div.repitem, div.repcontrol, div.itemcontrol {
   border: 0 !important;
@@ -66,27 +69,21 @@ fieldset, div.repcontainer, div.repitem, div.repcontrol, div.itemcontrol {
   padding: 0 !important;
 }
 
-input, select, textarea {
-  border: $input-border-width solid gray;
-  padding: $input-padding;
-}
+.sheet-clear { clear: both;  height: 0; }
 
-textarea {
-  vertical-align: top;
-  min-height: $line-height !important;
-  height: $line-height !important;
-  resize: vertical;
-  margin-bottom: $line-margin-bottom;
-}
+// BORDERS
 
-label, input, select {
-  vertical-align: top;
-  height: $line-height !important;
-  line-height: $line-height !important;
-  margin-bottom: $line-margin-bottom;
-}
+div { border: $div-border-width solid black; }
+input, select, textarea { border: $input-border-width solid gray; }
 
-label, input[type="number"] { 
+// BACKGROUND COLORS
+
+div.sheet-vaarn-character { background-color: $background-white !important; }
+input, select, textarea { background-color: inherit !important; }
+
+// FONTS
+
+label, input[type="number"], select { 
   font-family: 'Crimson Text', Arial;
   font-weight: $label-font-weight;
   color: $vaarn-blue !important;
@@ -94,15 +91,38 @@ label, input[type="number"] {
   text-align: center;
 }
 label { font-size: $label-font-size; }
-input[type="number"] { font-size: $label-font-size-large; }
 label.sheet-small      { font-size: $label-font-size-small; }
 label.sheet-large      { font-size: $label-font-size-large; }
 label.sheet-very-large { font-size: $label-font-size-very-large; letter-spacing: 3px; }
+input[type="number"] { font-size: $label-font-size-large; }
+select { font-size: $label-font-size; }
 
-.sheet-clear {
-  clear: both;  
-  height: 0;
+// INPUT CONFIGURATION
+
+label, input, select, textarea {
+  vertical-align: top;
+  margin-bottom: $line-margin-bottom;
+  height: $line-height !important;
+  height: $line-height !important;
 }
+
+textarea {
+  min-height: $line-height !important;
+  resize: vertical;
+}
+
+label, input, select {
+  line-height: $line-height !important;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: '';
+}
+
+// LAYOUT CONFIG
 
 div.sheet-vaarn-character {
   width: $total-width;
@@ -188,9 +208,16 @@ div.sheet-vaarn-character {
       padding-left: $item-slots-padding;
       margin-left: $item-modify-margin;
       vertical-align: top;
+      padding-top: $item-slots-padding-top;
     }
     input.sheet-item-slots::placeholder {
       font-size: $label-font-size-small;
+      padding-top: 0;
+    }
+
+    select.sheet-item-type {
+      width: $item-type-width;
+      margin-left: $item-modify-margin;
     }
 
     div.repcontainer {
@@ -201,7 +228,7 @@ div.sheet-vaarn-character {
       }
     }
 
-    input.sheet-item-encumbered[value="1"] ~ .repcontainer label { color: red !important; }
+    input.sheet-item-encumbered[value="1"] ~ .repcontainer label { color: $encumbered-red !important; }
     input.sheet-item-overloaded[value="1"] ~ .repcontainer label { font-style: italic; }
 
     span.sheet-spacer {

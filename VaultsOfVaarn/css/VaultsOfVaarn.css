@@ -3,37 +3,34 @@ div, input, select, textarea {
   box-sizing: border-box;
 }
 
-div {
-  border: 0px solid black;
-}
-
 fieldset, div.repcontainer, div.repitem, div.repcontrol, div.itemcontrol {
   border: 0 !important;
   margin: 0 !important;
   padding: 0 !important;
 }
 
+.sheet-clear {
+  clear: both;
+  height: 0;
+}
+
+div {
+  border: 0px solid black;
+}
+
 input, select, textarea {
   border: 1px solid gray;
-  padding: 2px;
 }
 
-textarea {
-  vertical-align: top;
-  min-height: 24px !important;
-  height: 24px !important;
-  resize: vertical;
-  margin-bottom: 5px;
+div.sheet-vaarn-character {
+  background-color: rgb(255, 255, 255) !important;
 }
 
-label, input, select {
-  vertical-align: top;
-  height: 24px !important;
-  line-height: 24px !important;
-  margin-bottom: 5px;
+input, select, textarea {
+  background-color: inherit !important;
 }
 
-label, input[type=number] {
+label, input[type=number], select {
   font-family: "Crimson Text", Arial;
   font-weight: 700;
   color: rgb(32, 88, 141) !important;
@@ -43,10 +40,6 @@ label, input[type=number] {
 
 label {
   font-size: 15px;
-}
-
-input[type=number] {
-  font-size: 19px;
 }
 
 label.sheet-small {
@@ -62,9 +55,35 @@ label.sheet-very-large {
   letter-spacing: 3px;
 }
 
-.sheet-clear {
-  clear: both;
-  height: 0;
+input[type=number] {
+  font-size: 19px;
+}
+
+select {
+  font-size: 15px;
+}
+
+label, input, select, textarea {
+  vertical-align: top;
+  margin-bottom: 5px;
+  height: 24px !important;
+  height: 24px !important;
+}
+
+textarea {
+  min-height: 24px !important;
+  resize: vertical;
+}
+
+label, input, select {
+  line-height: 24px !important;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: "";
 }
 
 div.sheet-vaarn-character {
@@ -192,7 +211,7 @@ div.sheet-vaarn-character div.sheet-item input.sheet-item-slots-hidden[value="10
   counter-increment: item 10;
 }
 div.sheet-vaarn-character div.sheet-item input.sheet-item-name {
-  width: 626px;
+  width: 541px;
   vertical-align: top;
 }
 div.sheet-vaarn-character div.sheet-item input.sheet-item-slots {
@@ -200,9 +219,15 @@ div.sheet-vaarn-character div.sheet-item input.sheet-item-slots {
   padding-left: 14px;
   margin-left: 5px;
   vertical-align: top;
+  padding-top: 2px;
 }
 div.sheet-vaarn-character div.sheet-item input.sheet-item-slots::placeholder {
   font-size: 14px;
+  padding-top: 0;
+}
+div.sheet-vaarn-character div.sheet-item select.sheet-item-type {
+  width: 80px;
+  margin-left: 5px;
 }
 div.sheet-vaarn-character div.sheet-item div.repcontainer {
   line-height: 10px;
