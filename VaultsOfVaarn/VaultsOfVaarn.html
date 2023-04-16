@@ -118,7 +118,8 @@
   </div>
 
   <div class="gear">
-    <input type="number" name="attr_gear_count" style="display: none;"></input>
+    <input type="number" class="gear-count" name="attr_gear_count" style="display: none;"></input>
+    <input type="number" class="gear-encumbered" name="attr_gear_encumbered" style="display: none;"></input>
     <fieldset class="repeating_gear">
       <label></label><input type="text" name="attr_gear_name"/><span class="spacer"><button disabled>&nbsp;</button><button disabled>&nbsp;</button></span>
     </fieldset>
@@ -145,12 +146,25 @@
     });
   });
 
-  on("change:repeating_gear sheet:opened", function() {
-    getSectionIDs("repeating_gear", function(ids) {
-      let count = ids.length;
-      log("new count: " + count);
-      setAttrs({
-        "gear_count": count
+  on("change:repeating_gear remove:repeating_gear sheet:opened", function() {
+    getAttrs(["con_def"], function(values) {
+      let con_def = values.con_def;
+      getSectionIDs("repeating_gear", function(ids) {
+        let count = ids.length;
+        log("new count: " + count);
+        let encumbered = -1;
+        if (count <= con_def) {
+          encumbered = 0;
+        } else if (count <= 20) {
+          encumbered = 1;
+        } else {
+          encumbered = 2;
+        }
+        log("encumbered: " + encumbered);
+        setAttrs({
+          "gear_count": count,
+          "gear_encumbered": encumbered,
+        });
       });
     });
   });

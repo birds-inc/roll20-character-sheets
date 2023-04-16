@@ -171,6 +171,10 @@ div.sheet-vaarn-character {
       }
     }
 
+    input.sheet-gear-count ~ .repcontainer label {
+      color: red;
+    }
+
     span.sheet-spacer {
       display: inline-block;
       width: $gear-spacer-width;

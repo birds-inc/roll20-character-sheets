@@ -170,6 +170,9 @@ div.sheet-vaarn-character div.sheet-gear div.repcontainer div.repitem {
   display: inline-block;
   height: 24px;
 }
+div.sheet-vaarn-character div.sheet-gear input.sheet-gear-count ~ .repcontainer label {
+  color: red;
+}
 div.sheet-vaarn-character div.sheet-gear span.sheet-spacer {
   display: inline-block;
   width: 58px;
