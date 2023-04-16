@@ -28,12 +28,12 @@ $bio-input-width: 60px;
 $bio-input-padding: 14px;
 $bio-textarea-margin: 10px;
 
-$stats-label-width: 100px;
-$div-labels-width: $stats-label-width + $div-extra-width;
-$div-stat-width: calc(($total-width - $div-labels-width) / 6) - 1px;
+$abilitys-label-width: 100px;
+$div-labels-width: $abilitys-label-width + $div-extra-width;
+$div-ability-width: calc(($total-width - $div-labels-width) / 6) - 1px;
 
-$stat-input-width: $div-stat-width - $div-extra-width;
-$stat-input-padding: 15px;
+$ability-input-width: $div-ability-width - $div-extra-width;
+$ability-input-padding: 15px;
 
 $item-label-width: 40px;
 $item-button-margin: 10px;
@@ -147,14 +147,14 @@ div.sheet-vaarn-character {
   div.sheet-labels {
     float: left;
     width: $div-labels-width;
-    label              { width: $stats-label-width; }
+    label              { width: $abilitys-label-width; }
   }
-  div.sheet-stat {
+  div.sheet-ability {
     float: left;
-    width: $div-stat-width;
-    input, textarea    { width: $stat-input-width; }
+    width: $div-ability-width;
+    input, textarea    { width: $ability-input-width; }
     input {
-      padding-left: $stat-input-padding;
+      padding-left: $ability-input-padding;
     }
   }
 

@@ -138,14 +138,14 @@ div.sheet-vaarn-character div.sheet-labels {
 div.sheet-vaarn-character div.sheet-labels label {
   width: 100px;
 }
-div.sheet-vaarn-character div.sheet-stat {
+div.sheet-vaarn-character div.sheet-ability {
   float: left;
   width: 114px;
 }
-div.sheet-vaarn-character div.sheet-stat input, div.sheet-vaarn-character div.sheet-stat textarea {
+div.sheet-vaarn-character div.sheet-ability input, div.sheet-vaarn-character div.sheet-ability textarea {
   width: 104px;
 }
-div.sheet-vaarn-character div.sheet-stat input {
+div.sheet-vaarn-character div.sheet-ability input {
   padding-left: 15px;
 }
 div.sheet-vaarn-character div.sheet-notes {
