@@ -7,7 +7,7 @@ div {
   border: 0px solid black;
 }
 
-fieldset, div.repcontainer, div.repitem, div.repcontrol {
+fieldset, div.repcontainer, div.repitem, div.repcontrol, div.itemcontrol {
   border: 0 !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -33,20 +33,24 @@ label, input, select {
   margin-bottom: 5px;
 }
 
-body.sheet-darkmode label {
-  color: rgb(32, 88, 141) !important;
-}
-
-label {
+label, input[type=number] {
   font-family: "Crimson Text", Arial;
-  font-size: 15px;
+  font-weight: 700;
   color: rgb(32, 88, 141) !important;
   padding: 0;
   text-align: center;
 }
 
+label {
+  font-size: 15px;
+}
+
+input[type=number] {
+  font-size: 19px;
+}
+
 label.sheet-small {
-  font-size: 13px;
+  font-size: 14px;
 }
 
 label.sheet-large {
@@ -85,6 +89,11 @@ div.sheet-vaarn-character div.sheet-header {
 }
 div.sheet-vaarn-character div.sheet-header label {
   width: 789px;
+  margin: 0;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-top: 1px solid rgb(32, 88, 141);
+  border-bottom: 1px solid rgb(32, 88, 141);
 }
 div.sheet-vaarn-character div.sheet-basics {
   float: left;
@@ -99,6 +108,11 @@ div.sheet-vaarn-character div.sheet-basics input[type=text] {
 div.sheet-vaarn-character div.sheet-basics select {
   width: 294px;
 }
+div.sheet-vaarn-character div.sheet-basics div.sheet-auto-expand {
+  margin-top: 3px;
+  font-size: 11px;
+  border: 0;
+}
 div.sheet-vaarn-character div.sheet-bio {
   float: left;
   width: 399px;
@@ -109,6 +123,13 @@ div.sheet-vaarn-character div.sheet-bio label {
 div.sheet-vaarn-character div.sheet-bio span.sheet-spacer {
   display: inline-block;
   width: 60px;
+}
+div.sheet-vaarn-character div.sheet-bio input[type=number] {
+  width: 60px;
+  padding-left: 14px;
+}
+div.sheet-vaarn-character div.sheet-bio div.sheet-auto-expand {
+  margin-top: 10px;
 }
 div.sheet-vaarn-character div.sheet-labels {
   float: left;
@@ -124,6 +145,9 @@ div.sheet-vaarn-character div.sheet-stat {
 div.sheet-vaarn-character div.sheet-stat input, div.sheet-vaarn-character div.sheet-stat textarea {
   width: 104px;
 }
+div.sheet-vaarn-character div.sheet-stat input {
+  padding-left: 15px;
+}
 div.sheet-vaarn-character div.sheet-gear {
   width: 800px;
   counter-reset: gear;
@@ -136,7 +160,56 @@ div.sheet-vaarn-character div.sheet-gear label::before {
   content: "#" counter(gear);
 }
 div.sheet-vaarn-character div.sheet-gear input {
-  width: 749px;
+  width: 691px;
+  vertical-align: top;
+}
+div.sheet-vaarn-character div.sheet-gear div.repcontainer {
+  line-height: 10px;
+}
+div.sheet-vaarn-character div.sheet-gear div.repcontainer div.repitem {
+  display: inline-block;
+  height: 24px;
+}
+div.sheet-vaarn-character div.sheet-gear span.sheet-spacer {
+  display: inline-block;
+  width: 58px;
+  margin-bottom: 5px;
+}
+div.sheet-vaarn-character div.sheet-gear span.sheet-spacer button {
+  height: 24px;
+  width: 24px;
+  padding: 0;
+  box-sizing: border-box;
+  float: right;
+  margin-left: 5px;
+  border-radius: 4px;
+}
+div.sheet-vaarn-character div.sheet-gear div.itemcontrol a, div.sheet-vaarn-character div.sheet-gear div.itemcontrol button {
+  height: 24px;
+  width: 24px;
+  padding: 0;
+  box-sizing: border-box;
+  float: right;
+  margin-left: 5px;
+}
+div.sheet-vaarn-character div.sheet-gear div.itemcontrol a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+div.sheet-vaarn-character div.sheet-gear div.repcontrol {
+  display: inline-block;
+  width: 100%;
+}
+div.sheet-vaarn-character div.sheet-gear div.repcontrol button {
+  font-family: "Crimson Text", Arial;
+  font-size: 15px;
+  font-weight: 700;
+  color: rgb(32, 88, 141) !important;
+  text-align: center;
+  text-transform: uppercase;
+  float: right;
+  margin-left: 10px;
 }
 
 .sheet-auto-expand {

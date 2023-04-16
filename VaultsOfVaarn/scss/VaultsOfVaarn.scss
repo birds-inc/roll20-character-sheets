@@ -2,6 +2,9 @@
 
 $total-width: 800px;
 
+$line-height: 24px;
+$line-margin-bottom: 5px;
+
 $div-border-width: 0px;
 $div-padding: 5px;
 $div-extra-width: calc($div-border-width * 2) + calc($div-padding * 2);
@@ -16,26 +19,34 @@ $basics-label-width: 95px;
 $input-number-width: 45px;
 $input-half-width: $div-half-width - $div-extra-width;
 $label-input-half-width: $input-half-width - $basics-label-width;
+$basics-textarea-font-size: 11px;
+$basics-textarea-margin: 3px;
 
 $bio-label-width: 60px;
 $bio-spacer-width: 60px;
+$bio-input-width: 60px;
+$bio-input-padding: 14px;
+$bio-textarea-margin: 10px;
 
 $stats-label-width: 100px;
 $div-labels-width: $stats-label-width + $div-extra-width;
 $div-stat-width: calc(($total-width - $div-labels-width) / 6) - 1px;
 
 $stat-input-width: $div-stat-width - $div-extra-width;
+$stat-input-padding: 15px;
 
 $gear-label-width: 40px;
-$gear-input-width: $total-width - $div-extra-width - $gear-label-width - 1px;
-
-$line-height: 24px;
-$line-margin-bottom: 5px;
+$gear-button-margin: 10px;
+$gear-modify-margin: 5px;
+$gear-line-height: 10px;
+$gear-spacer-width: calc($line-height * 2) + calc($gear-modify-margin * 2);
+$gear-input-width: $total-width - $div-extra-width - $gear-label-width - $gear-spacer-width - 1px;
 
 $label-font-size: 15px;
-$label-font-size-small: 13px;
+$label-font-size-small: 14px;
 $label-font-size-large: 19px;
 $label-font-size-very-large: 22px;
+$label-font-weight: 700;
 $vaarn-blue: rgb(32,88,141);
 
 div, input, select, textarea { box-sizing: border-box; }
@@ -44,7 +55,7 @@ div {
   border: $div-border-width solid black;
 }
 
-fieldset, div.repcontainer, div.repitem, div.repcontrol {
+fieldset, div.repcontainer, div.repitem, div.repcontrol, div.itemcontrol {
   border: 0 !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -70,17 +81,15 @@ label, input, select {
   margin-bottom: $line-margin-bottom;
 }
 
-body.sheet-darkmode label {
-  color: $vaarn-blue !important;
-}
-
-label { 
+label, input[type="number"] { 
   font-family: 'Crimson Text', Arial;
-  font-size: $label-font-size;
+  font-weight: $label-font-weight;
   color: $vaarn-blue !important;
   padding: 0;
   text-align: center;
 }
+label { font-size: $label-font-size; }
+input[type="number"] { font-size: $label-font-size-large; }
 label.sheet-small      { font-size: $label-font-size-small; }
 label.sheet-large      { font-size: $label-font-size-large; }
 label.sheet-very-large { font-size: $label-font-size-very-large; letter-spacing: 3px; }
@@ -100,7 +109,14 @@ div.sheet-vaarn-character {
 
   div.sheet-header {
     width: $total-width;
-    label              { width: $header-label-width; }
+    label {
+      width: $header-label-width;
+      margin: 0;
+      padding-top: $line-margin-bottom;
+      padding-bottom: $line-margin-bottom;
+      border-top: 1px solid $vaarn-blue;
+      border-bottom: 1px solid $vaarn-blue;
+    }
   }
 
   div.sheet-basics {
@@ -109,12 +125,20 @@ div.sheet-vaarn-character {
     label              { width: $basics-label-width; }
     input[type="text"] { width: $label-input-half-width; }
     select             { width: $label-input-half-width; }
+
+    div.sheet-auto-expand {
+      margin-top: $basics-textarea-margin;
+      font-size: $basics-textarea-font-size;
+      border: 0;
+    }
   }
   div.sheet-bio {
     float: left;
     width: $div-half-width;
-    label              { width: $bio-label-width; }
-    span.sheet-spacer  { display: inline-block; width: $bio-spacer-width; }
+    label                 { width: $bio-label-width; }
+    span.sheet-spacer     { display: inline-block; width: $bio-spacer-width; }
+    input[type="number"]  { width: $bio-input-width; padding-left: $bio-input-padding; }
+    div.sheet-auto-expand { margin-top: $bio-textarea-margin; }
   }
 
   div.sheet-labels {
@@ -126,6 +150,9 @@ div.sheet-vaarn-character {
     float: left;
     width: $div-stat-width;
     input, textarea    { width: $stat-input-width; }
+    input {
+      padding-left: $stat-input-padding;
+    }
   }
 
   div.sheet-gear {
@@ -134,7 +161,61 @@ div.sheet-vaarn-character {
 
     label { width: $gear-label-width; }
     label::before { counter-increment: gear; content: "#" counter(gear); }
-    input { width: $gear-input-width; }
+    input { width: $gear-input-width; vertical-align: top; }
+
+    div.repcontainer {
+      line-height: $gear-line-height;
+      div.repitem {
+        display: inline-block;
+        height: $line-height;
+      }
+    }
+
+    span.sheet-spacer {
+      display: inline-block;
+      width: $gear-spacer-width;
+      margin-bottom: $line-margin-bottom;
+      button {
+        height: $line-height;
+        width: $line-height;
+        padding: 0;
+        box-sizing: border-box;
+        float: right;
+        margin-left: $gear-modify-margin;
+        border-radius: 4px;
+      }
+    }
+
+    div.itemcontrol {
+      a, button {
+        height: $line-height;
+        width: $line-height;
+        padding: 0;
+        box-sizing: border-box;
+        float: right;
+        margin-left: $gear-modify-margin;
+      }
+      a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
+    div.repcontrol {
+      display: inline-block;
+      width: 100%;
+      button { 
+        font-family: 'Crimson Text', Arial;
+        font-size: $label-font-size;
+        font-weight: $label-font-weight;
+        color: $vaarn-blue !important;
+        text-align: center;
+        text-transform: uppercase;
+        float: right;
+        margin-left: $gear-button-margin;
+      }
+    }
   }
 }
 
