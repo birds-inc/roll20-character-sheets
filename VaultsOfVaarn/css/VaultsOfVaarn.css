@@ -159,12 +159,50 @@ div.sheet-vaarn-character div.sheet-inventory label {
   width: 40px;
 }
 div.sheet-vaarn-character div.sheet-inventory label::before {
-  counter-increment: inventory;
   content: "#" counter(inventory);
 }
-div.sheet-vaarn-character div.sheet-inventory input {
-  width: 691px;
+div.sheet-vaarn-character div.sheet-inventory label {
+  counter-increment: inventory;
+}
+div.sheet-vaarn-character div.sheet-inventory input.sheet-inventory-slots-hidden[value="2"] ~ label {
+  counter-increment: inventory 2;
+}
+div.sheet-vaarn-character div.sheet-inventory input.sheet-inventory-slots-hidden[value="3"] ~ label {
+  counter-increment: inventory 3;
+}
+div.sheet-vaarn-character div.sheet-inventory input.sheet-inventory-slots-hidden[value="4"] ~ label {
+  counter-increment: inventory 4;
+}
+div.sheet-vaarn-character div.sheet-inventory input.sheet-inventory-slots-hidden[value="5"] ~ label {
+  counter-increment: inventory 5;
+}
+div.sheet-vaarn-character div.sheet-inventory input.sheet-inventory-slots-hidden[value="6"] ~ label {
+  counter-increment: inventory 6;
+}
+div.sheet-vaarn-character div.sheet-inventory input.sheet-inventory-slots-hidden[value="7"] ~ label {
+  counter-increment: inventory 7;
+}
+div.sheet-vaarn-character div.sheet-inventory input.sheet-inventory-slots-hidden[value="8"] ~ label {
+  counter-increment: inventory 8;
+}
+div.sheet-vaarn-character div.sheet-inventory input.sheet-inventory-slots-hidden[value="9"] ~ label {
+  counter-increment: inventory 9;
+}
+div.sheet-vaarn-character div.sheet-inventory input.sheet-inventory-slots-hidden[value="10"] ~ label {
+  counter-increment: inventory 10;
+}
+div.sheet-vaarn-character div.sheet-inventory input.sheet-inventory-name {
+  width: 626px;
   vertical-align: top;
+}
+div.sheet-vaarn-character div.sheet-inventory input.sheet-inventory-slots {
+  width: 60px;
+  padding-left: 14px;
+  margin-left: 5px;
+  vertical-align: top;
+}
+div.sheet-vaarn-character div.sheet-inventory input.sheet-inventory-slots::placeholder {
+  font-size: 14px;
 }
 div.sheet-vaarn-character div.sheet-inventory div.repcontainer {
   line-height: 10px;

@@ -34,7 +34,7 @@
 
     <div class="sheet-auto-expand">
       <span name="attr_bio"></span>
-      <textarea spellcheck="false" name="attr_bio"></textarea>
+      <textarea spellcheck="false" name="attr_bio" placeholder="bio"></textarea>
     </div>
   </div>
 
@@ -122,7 +122,8 @@
     <input type="hidden" class="inventory-encumbered" name="attr_inventory_encumbered" max="0"></input>
     <input type="hidden" class="inventory-overloaded" name="attr_inventory_overloaded" max="0"></input>
     <fieldset class="repeating_inventory">
-      <label></label><input type="text" name="attr_inventory_name"/><span class="spacer"><button disabled>&nbsp;</button><button disabled>&nbsp;</button></span>
+      <input type="hidden" name="attr_inventory_slots" class="inventory-slots-hidden"/>
+      <label></label><input type="text" name="attr_inventory_name" class="inventory-name"/><input type="number" name="attr_inventory_slots" class="inventory-slots" min="1" max="10" placeholder="slots"/><span class="spacer"><button disabled>&nbsp;</button><button disabled>&nbsp;</button></span>
     </fieldset>
   </div>
 
@@ -149,7 +150,7 @@
   };
 
   on("change:ancestry sheet:opened", function() {
-    getAttrs(["ancestry"], function(values) {
+    getAttrs(["ancestry"], values => {
       let ancestry = values.ancestry;
       let specialrules = specialrules_map[ancestry];
       setAttrs({
@@ -158,23 +159,39 @@
     });
   });
 
-  on("change:con_def change:repeating_inventory remove:repeating_inventory sheet:opened", function() {
-    getAttrs(["con_def"], function(values) {
+  on("change:con_def change:repeating_inventory remove:repeating_inventory sheet:opened", () => {
+    getAttrs(["con_def"], values => {
       let con_def = values.con_def;
-      getSectionIDs("repeating_inventory", function(ids) {
-        let count = ids.length;
-        let encumbered = 0;
-        if (count > con_def) {
-          encumbered = 1;
-        }
-        let overloaded = 0;
-        if (count > 20) {
-          overloaded = 1;
-        }
-        setAttrs({
-          "inventory_count": count,
-          "inventory_encumbered": encumbered,
-          "inventory_overloaded": overloaded,
+      let slot_attrs = []
+      let count = 0;
+      let encumbered = 0;
+      let overloaded = 0;
+
+      getSectionIDs("repeating_inventory", ids => {
+        ids.forEach(id => {
+          slot_attrs.push("repeating_inventory_" + id + "_inventory_slots");
+        });
+
+        getAttrs(slot_attrs, values => {
+          slot_attrs.forEach(attr => {
+            if (values[attr]) {
+              count += parseInt(values[attr]);
+            } else {
+              count += 1;
+            }
+          });
+
+          if (count > con_def) {
+            encumbered = 1;
+          }
+          if (count > 20) {
+            overloaded = 1;
+          }
+          setAttrs({
+            "inventory_count": count,
+            "inventory_encumbered": encumbered,
+            "inventory_overloaded": overloaded,
+          });
         });
       });
     });

@@ -39,8 +39,10 @@ $inventory-label-width: 40px;
 $inventory-button-margin: 10px;
 $inventory-modify-margin: 5px;
 $inventory-line-height: 10px;
+$inventory-slots-width: 60px;
+$inventory-slots-padding: 14px;
 $inventory-spacer-width: calc($line-height * 2) + calc($inventory-modify-margin * 2);
-$inventory-input-width: $total-width - $div-extra-width - $inventory-label-width - $inventory-spacer-width - 1px;
+$inventory-name-width: $total-width - $div-extra-width - $inventory-label-width - $inventory-spacer-width - $inventory-slots-width - $inventory-modify-margin - 1px;
 
 $label-font-size: 15px;
 $label-font-size-small: 14px;
@@ -165,8 +167,29 @@ div.sheet-vaarn-character {
     counter-reset: inventory;
 
     label { width: $inventory-label-width; }
-    label::before { counter-increment: inventory; content: "#" counter(inventory); }
-    input { width: $inventory-input-width; vertical-align: top; }
+    label::before { content: "#" counter(inventory); }
+
+    label { counter-increment: inventory; }
+    input.sheet-inventory-slots-hidden[value="2"] ~ label { counter-increment: inventory 2; }
+    input.sheet-inventory-slots-hidden[value="3"] ~ label { counter-increment: inventory 3; }
+    input.sheet-inventory-slots-hidden[value="4"] ~ label { counter-increment: inventory 4; }
+    input.sheet-inventory-slots-hidden[value="5"] ~ label { counter-increment: inventory 5; }
+    input.sheet-inventory-slots-hidden[value="6"] ~ label { counter-increment: inventory 6; }
+    input.sheet-inventory-slots-hidden[value="7"] ~ label { counter-increment: inventory 7; }
+    input.sheet-inventory-slots-hidden[value="8"] ~ label { counter-increment: inventory 8; }
+    input.sheet-inventory-slots-hidden[value="9"] ~ label { counter-increment: inventory 9; }
+    input.sheet-inventory-slots-hidden[value="10"] ~ label { counter-increment: inventory 10; }
+
+    input.sheet-inventory-name { width: $inventory-name-width; vertical-align: top; }
+    input.sheet-inventory-slots {
+      width: $inventory-slots-width;
+      padding-left: $inventory-slots-padding;
+      margin-left: $inventory-modify-margin;
+      vertical-align: top;
+    }
+    input.sheet-inventory-slots::placeholder {
+      font-size: $label-font-size-small;
+    }
 
     div.repcontainer {
       line-height: $inventory-line-height;
