@@ -4,9 +4,9 @@
   </div>
 
   <div class="basics">
-    <label>NAME:</label><input type="text" name="attr_name"/><br/>
+    <label>NAME</label><input type="text" name="attr_name"/><br/>
 
-    <label>ANCESTRY:</label><select type="text" name="attr_ancestry">
+    <label>ANCESTRY</label><select type="text" name="attr_ancestry">
       <option value="truekin">True-Kin</option>
       <option value="synth">Synth</option>
       <option value="newbeast">Newbeast</option>
@@ -22,14 +22,14 @@
   </div>
   
   <div class="bio">
-    <label>HP:</label><input type="number" name="attr_hp_cur"/>
+    <label>HP</label><input type="number" name="attr_hp_cur"/>
     <span class="spacer">&nbsp;</span>
-    <label>LEVEL:</label><input type="number" name="attr_level"/>
+    <label>LEVEL</label><input type="number" name="attr_level"/>
     <br/>
 
-    <label>MAX:</label><input type="number" name="attr_hp_max"/>
+    <label>MAX</label><input type="number" name="attr_hp_max"/>
     <span class="spacer">&nbsp;</span>
-    <label>XP:</label><input type="number" name="attr_xp"/>
+    <label>XP</label><input type="number" name="attr_xp"/>
     <br/>
 
     <div class="sheet-auto-expand">
@@ -114,16 +114,16 @@
   <div class="clear"></div>
 
   <div class="header">
-    <label class="large">INVENTORY</label>
+    <label class="large">ITEMS</label>
   </div>
 
-  <div class="inventory">
-    <input type="hidden" class="inventory-count" name="attr_inventory_count"></input>
-    <input type="hidden" class="inventory-encumbered" name="attr_inventory_encumbered" max="0"></input>
-    <input type="hidden" class="inventory-overloaded" name="attr_inventory_overloaded" max="0"></input>
-    <fieldset class="repeating_inventory">
-      <input type="hidden" name="attr_inventory_slots" class="inventory-slots-hidden"/>
-      <label></label><input type="text" name="attr_inventory_name" class="inventory-name"/><input type="number" name="attr_inventory_slots" class="inventory-slots" min="1" max="10" placeholder="slots"/><span class="spacer"><button disabled>&nbsp;</button><button disabled>&nbsp;</button></span>
+  <div class="item">
+    <input type="hidden" class="item-count" name="attr_item_count"></input>
+    <input type="hidden" class="item-encumbered" name="attr_item_encumbered" max="0"></input>
+    <input type="hidden" class="item-overloaded" name="attr_item_overloaded" max="0"></input>
+    <fieldset class="repeating_item">
+      <input type="hidden" name="attr_item_slots" class="item-slots-hidden"/>
+      <label></label><input type="text" name="attr_item_name" class="item-name"/><input type="number" name="attr_item_slots" class="item-slots" min="1" max="10" placeholder="slots"/><span class="spacer"><button disabled>&nbsp;</button><button disabled>&nbsp;</button></span>
     </fieldset>
   </div>
 
@@ -159,7 +159,7 @@
     });
   });
 
-  on("change:con_def change:repeating_inventory remove:repeating_inventory sheet:opened", () => {
+  on("change:con_def change:repeating_item remove:repeating_item sheet:opened", () => {
     getAttrs(["con_def"], values => {
       let con_def = values.con_def;
       let slot_attrs = []
@@ -167,9 +167,9 @@
       let encumbered = 0;
       let overloaded = 0;
 
-      getSectionIDs("repeating_inventory", ids => {
+      getSectionIDs("repeating_item", ids => {
         ids.forEach(id => {
-          slot_attrs.push("repeating_inventory_" + id + "_inventory_slots");
+          slot_attrs.push("repeating_item_" + id + "_item_slots");
         });
 
         getAttrs(slot_attrs, values => {
@@ -188,9 +188,9 @@
             overloaded = 1;
           }
           setAttrs({
-            "inventory_count": count,
-            "inventory_encumbered": encumbered,
-            "inventory_overloaded": overloaded,
+            "item_count": count,
+            "item_encumbered": encumbered,
+            "item_overloaded": overloaded,
           });
         });
       });
