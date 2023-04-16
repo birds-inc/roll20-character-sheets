@@ -47,6 +47,7 @@ $label-font-size-small: 14px;
 $label-font-size-large: 19px;
 $label-font-size-very-large: 22px;
 $label-font-weight: 700;
+
 $vaarn-blue: rgb(32,88,141);
 
 div, input, select, textarea { box-sizing: border-box; }
@@ -171,9 +172,8 @@ div.sheet-vaarn-character {
       }
     }
 
-    input.sheet-gear-count ~ .repcontainer label {
-      color: red;
-    }
+    input.sheet-gear-encumbered:invalid ~ .repcontainer label { color: red !important; }
+    input.sheet-gear-overloaded:invalid ~ .repcontainer label { font-style: italic; }
 
     span.sheet-spacer {
       display: inline-block;
