@@ -35,12 +35,12 @@ $div-stat-width: calc(($total-width - $div-labels-width) / 6) - 1px;
 $stat-input-width: $div-stat-width - $div-extra-width;
 $stat-input-padding: 15px;
 
-$gear-label-width: 40px;
-$gear-button-margin: 10px;
-$gear-modify-margin: 5px;
-$gear-line-height: 10px;
-$gear-spacer-width: calc($line-height * 2) + calc($gear-modify-margin * 2);
-$gear-input-width: $total-width - $div-extra-width - $gear-label-width - $gear-spacer-width - 1px;
+$inventory-label-width: 40px;
+$inventory-button-margin: 10px;
+$inventory-modify-margin: 5px;
+$inventory-line-height: 10px;
+$inventory-spacer-width: calc($line-height * 2) + calc($inventory-modify-margin * 2);
+$inventory-input-width: $total-width - $div-extra-width - $inventory-label-width - $inventory-spacer-width - 1px;
 
 $label-font-size: 15px;
 $label-font-size-small: 14px;
@@ -156,28 +156,32 @@ div.sheet-vaarn-character {
     }
   }
 
-  div.sheet-gear {
+  div.sheet-notes {
     width: $total-width;
-    counter-reset: gear;
+  }
 
-    label { width: $gear-label-width; }
-    label::before { counter-increment: gear; content: "#" counter(gear); }
-    input { width: $gear-input-width; vertical-align: top; }
+  div.sheet-inventory {
+    width: $total-width;
+    counter-reset: inventory;
+
+    label { width: $inventory-label-width; }
+    label::before { counter-increment: inventory; content: "#" counter(inventory); }
+    input { width: $inventory-input-width; vertical-align: top; }
 
     div.repcontainer {
-      line-height: $gear-line-height;
+      line-height: $inventory-line-height;
       div.repitem {
         display: inline-block;
         height: $line-height;
       }
     }
 
-    input.sheet-gear-encumbered:invalid ~ .repcontainer label { color: red !important; }
-    input.sheet-gear-overloaded:invalid ~ .repcontainer label { font-style: italic; }
+    input.sheet-inventory-encumbered:invalid ~ .repcontainer label { color: red !important; }
+    input.sheet-inventory-overloaded:invalid ~ .repcontainer label { font-style: italic; }
 
     span.sheet-spacer {
       display: inline-block;
-      width: $gear-spacer-width;
+      width: $inventory-spacer-width;
       margin-bottom: $line-margin-bottom;
       button {
         height: $line-height;
@@ -185,7 +189,7 @@ div.sheet-vaarn-character {
         padding: 0;
         box-sizing: border-box;
         float: right;
-        margin-left: $gear-modify-margin;
+        margin-left: $inventory-modify-margin;
         border-radius: 4px;
       }
     }
@@ -197,7 +201,7 @@ div.sheet-vaarn-character {
         padding: 0;
         box-sizing: border-box;
         float: right;
-        margin-left: $gear-modify-margin;
+        margin-left: $inventory-modify-margin;
       }
       a {
         display: flex;
@@ -217,7 +221,7 @@ div.sheet-vaarn-character {
         text-align: center;
         text-transform: uppercase;
         float: right;
-        margin-left: $gear-button-margin;
+        margin-left: $inventory-button-margin;
       }
     }
   }

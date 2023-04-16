@@ -114,16 +114,27 @@
   <div class="clear"></div>
 
   <div class="header">
-    <label class="large">GEAR</label>
+    <label class="large">INVENTORY</label>
   </div>
 
-  <div class="gear">
-    <input type="number" class="gear-count" name="attr_gear_count" style="display: none;"></input>
-    <input type="number" class="gear-encumbered" name="attr_gear_encumbered" max="0" style="display: none;"></input>
-    <input type="number" class="gear-overloaded" name="attr_gear_overloaded" max="0" style="display: none;"></input>
-    <fieldset class="repeating_gear">
-      <label></label><input type="text" name="attr_gear_name"/><span class="spacer"><button disabled>&nbsp;</button><button disabled>&nbsp;</button></span>
+  <div class="inventory">
+    <input type="number" class="inventory-count" name="attr_inventory_count" style="display: none;"></input>
+    <input type="number" class="inventory-encumbered" name="attr_inventory_encumbered" max="0" style="display: none;"></input>
+    <input type="number" class="inventory-overloaded" name="attr_inventory_overloaded" max="0" style="display: none;"></input>
+    <fieldset class="repeating_inventory">
+      <label></label><input type="text" name="attr_inventory_name"/><span class="spacer"><button disabled>&nbsp;</button><button disabled>&nbsp;</button></span>
     </fieldset>
+  </div>
+
+  <div class="header">
+    <label class="large">NOTES</label>
+  </div>
+
+  <div class="notes">
+    <div class="sheet-auto-expand">
+      <span name="attr_notes"></span>
+      <textarea spellcheck="false" name="attr_notes"></textarea>
+    </div>
   </div>
 </div>
 
@@ -147,10 +158,10 @@
     });
   });
 
-  on("change:con_def change:repeating_gear remove:repeating_gear sheet:opened", function() {
+  on("change:con_def change:repeating_inventory remove:repeating_inventory sheet:opened", function() {
     getAttrs(["con_def"], function(values) {
       let con_def = values.con_def;
-      getSectionIDs("repeating_gear", function(ids) {
+      getSectionIDs("repeating_inventory", function(ids) {
         let count = ids.length;
         let encumbered = 0;
         if (count > con_def) {
@@ -161,9 +172,9 @@
           overloaded = 1;
         }
         setAttrs({
-          "gear_count": count,
-          "gear_encumbered": encumbered,
-          "gear_overloaded": overloaded,
+          "inventory_count": count,
+          "inventory_encumbered": encumbered,
+          "inventory_overloaded": overloaded,
         });
       });
     });
