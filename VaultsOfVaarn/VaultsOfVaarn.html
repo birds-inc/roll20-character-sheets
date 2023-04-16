@@ -118,11 +118,12 @@
   </div>
 
   <div class="item">
-    <input type="hidden" class="item-count" name="attr_item_count"></input>
-    <input type="hidden" class="item-encumbered" name="attr_item_encumbered" max="0"></input>
-    <input type="hidden" class="item-overloaded" name="attr_item_overloaded" max="0"></input>
+    <input type="hidden" class="item-count" name="attr_item_count"/>
+    <input type="hidden" class="item-encumbered" name="attr_item_encumbered" max="0"/>
+    <input type="hidden" class="item-overloaded" name="attr_item_overloaded" max="0"/>
     <fieldset class="repeating_item">
       <input type="hidden" name="attr_item_slots" class="item-slots-hidden"/>
+      <input type="hidden" name="attr_item_type" class="item-type-hidden"/>
       <label></label><input type="text" name="attr_item_name" class="item-name"/><select name="attr_item_type" class="item-type">
         <option value="item">Item</option>
         <option value="gift">Mystic Gift</option>
@@ -178,12 +179,21 @@
   on("change:con_def change:repeating_item remove:repeating_item sheet:opened", () => {
     getAttrs(["con_def"], values => {
       let con_def = values.con_def;
-      let slot_attrs = []
+      let slot_attrs = [];
+      let type_attrs = [];
+      let type_map = {};
       let count = 0;
       let encumbered = 0;
       let overloaded = 0;
+      let item_type = "";
 
       getSectionIDs("repeating_item", ids => {
+        // calculate item_types
+        ids.forEach(id => {
+          type_attrs.push("repeating_item_" + id + "_item_type");
+        });
+
+        // calculate encumbrance
         ids.forEach(id => {
           slot_attrs.push("repeating_item_" + id + "_item_slots");
         });

@@ -11,8 +11,8 @@ $textarea-font-size: 13px;
 
 $vaarn-blue: rgb(32,88,141);
 $encumbered-red: red;
-$input-background-gray: rgb(245, 245, 245);
 $background-white: rgb(255, 255, 255);
+$mystic-gift-green: green;
 
 $line-height: 24px;
 $textarea-line-height: 12px;
@@ -83,7 +83,7 @@ input, select, textarea { background-color: inherit !important; }
 
 // FONTS
 
-label, input[type="number"], select { 
+label, input[type="number"], select, option { 
   font-family: 'Crimson Text', Arial;
   font-weight: $label-font-weight;
   color: $vaarn-blue !important;
@@ -288,6 +288,11 @@ div.sheet-vaarn-character {
       font-size: $label-font-size-small;
       padding-top: 0;
     }
+
+    // TYPES
+
+    input.sheet-item-type-hidden[value="gift"] ~ select.sheet-item-type { color: $mystic-gift-green !important; }
+    input.sheet-item-type-hidden[value="wound"] ~ select.sheet-item-type { color: $encumbered-red !important; }
 
     // ITEM BUTTONS
 

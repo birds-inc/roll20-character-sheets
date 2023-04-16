@@ -30,7 +30,7 @@ input, select, textarea {
   background-color: inherit !important;
 }
 
-label, input[type=number], select {
+label, input[type=number], select, option {
   font-family: "Crimson Text", Arial;
   font-weight: 700;
   color: rgb(32, 88, 141) !important;
@@ -283,6 +283,12 @@ div.sheet-vaarn-character div.sheet-item input.sheet-item-slots {
 div.sheet-vaarn-character div.sheet-item input.sheet-item-slots::placeholder {
   font-size: 14px;
   padding-top: 0;
+}
+div.sheet-vaarn-character div.sheet-item input.sheet-item-type-hidden[value=gift] ~ select.sheet-item-type {
+  color: green !important;
+}
+div.sheet-vaarn-character div.sheet-item input.sheet-item-type-hidden[value=wound] ~ select.sheet-item-type {
+  color: red !important;
 }
 div.sheet-vaarn-character div.sheet-item span.sheet-spacer button {
   height: 24px;
