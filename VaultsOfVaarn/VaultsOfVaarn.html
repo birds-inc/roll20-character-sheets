@@ -163,7 +163,7 @@
   });
 
   on("change:str_bonus change:dex_bonus change:con_bonus change:int_bonus change:psy_bonus change:ego_bonus sheet:opened", () => {
-    getAttrs(["str_bonus", "dex_bonus", "con_bonus", "int_bonus", "ego_bonus", "ego_bonus"], values => {
+    getAttrs(["str_bonus", "dex_bonus", "con_bonus", "int_bonus", "psy_bonus", "ego_bonus"], values => {
       setAttrs({
         "str_def": parseInt(values.str_bonus) + 10,
         "dex_def": parseInt(values.dex_bonus) + 10,
