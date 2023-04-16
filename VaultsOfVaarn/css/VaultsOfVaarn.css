@@ -7,6 +7,12 @@ div {
   border: 0px solid black;
 }
 
+fieldset, div.repcontainer, div.repitem, div.repcontrol {
+  border: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
 input, select, textarea {
   border: 1px solid gray;
   padding: 2px;
@@ -28,13 +34,13 @@ label, input, select {
 }
 
 body.sheet-darkmode label {
-  color: rgb(32, 88, 141);
+  color: rgb(32, 88, 141) !important;
 }
 
 label {
   font-family: "Crimson Text", Arial;
   font-size: 15px;
-  color: rgb(32, 88, 141);
+  color: rgb(32, 88, 141) !important;
   padding: 0;
   text-align: center;
 }
@@ -49,6 +55,7 @@ label.sheet-large {
 
 label.sheet-very-large {
   font-size: 22px;
+  letter-spacing: 3px;
 }
 
 .sheet-clear {
@@ -90,7 +97,7 @@ div.sheet-vaarn-character div.sheet-basics input[type=text] {
   width: 294px;
 }
 div.sheet-vaarn-character div.sheet-basics select {
-  width: 289px;
+  width: 294px;
 }
 div.sheet-vaarn-character div.sheet-bio {
   float: left;
@@ -116,6 +123,20 @@ div.sheet-vaarn-character div.sheet-stat {
 }
 div.sheet-vaarn-character div.sheet-stat input, div.sheet-vaarn-character div.sheet-stat textarea {
   width: 104px;
+}
+div.sheet-vaarn-character div.sheet-gear {
+  width: 800px;
+  counter-reset: gear;
+}
+div.sheet-vaarn-character div.sheet-gear label {
+  width: 40px;
+}
+div.sheet-vaarn-character div.sheet-gear label::before {
+  counter-increment: gear;
+  content: "#" counter(gear);
+}
+div.sheet-vaarn-character div.sheet-gear input {
+  width: 749px;
 }
 
 .sheet-auto-expand {
