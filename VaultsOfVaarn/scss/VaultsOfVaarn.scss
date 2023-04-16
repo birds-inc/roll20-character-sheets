@@ -2,7 +2,17 @@
 
 $total-width: 800px;
 
+$label-font-size: 15px;
+$label-font-size-small: 14px;
+$label-font-size-large: 19px;
+$label-font-size-very-large: 22px;
+$label-font-weight: 700;
+$textarea-font-size: 13px;
+
+$vaarn-blue: rgb(32,88,141);
+
 $line-height: 24px;
+$textarea-line-height: 12px;
 $line-margin-bottom: 5px;
 
 $div-border-width: 0px;
@@ -43,14 +53,6 @@ $item-slots-width: 60px;
 $item-slots-padding: 14px;
 $item-spacer-width: calc($line-height * 2) + calc($item-modify-margin * 2);
 $item-name-width: $total-width - $div-extra-width - $item-label-width - $item-spacer-width - $item-slots-width - $item-modify-margin - 1px;
-
-$label-font-size: 15px;
-$label-font-size-small: 14px;
-$label-font-size-large: 19px;
-$label-font-size-very-large: 22px;
-$label-font-weight: 700;
-
-$vaarn-blue: rgb(32,88,141);
 
 div, input, select, textarea { box-sizing: border-box; }
 
@@ -259,6 +261,8 @@ div.sheet-vaarn-character {
 	word-wrap: break-word;
   min-height: $line-height;
   margin-bottom: $line-margin-bottom;
+  line-height: $textarea-line-height;
+  font-size: $textarea-font-size;
 }
 .sheet-auto-expand span {
 	visibility: hidden;
@@ -286,4 +290,5 @@ div.sheet-vaarn-character {
 	padding: inherit;
 	text-align: inherit;
 	text-transform: inherit;
+  font-size: inherit;
 }

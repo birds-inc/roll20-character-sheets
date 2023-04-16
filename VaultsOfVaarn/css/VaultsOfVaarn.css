@@ -266,6 +266,8 @@ div.sheet-vaarn-character div.sheet-item div.repcontrol button {
   word-wrap: break-word;
   min-height: 24px;
   margin-bottom: 5px;
+  line-height: 12px;
+  font-size: 13px;
 }
 
 .sheet-auto-expand span {
@@ -295,6 +297,7 @@ div.sheet-vaarn-character div.sheet-item div.repcontrol button {
   padding: inherit;
   text-align: inherit;
   text-transform: inherit;
+  font-size: inherit;
 }
 
 /*# sourceMappingURL=VaultsOfVaarn.css.map */
