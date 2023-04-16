@@ -173,10 +173,10 @@ div.sheet-vaarn-character div.sheet-inventory div.repcontainer div.repitem {
   display: inline-block;
   height: 24px;
 }
-div.sheet-vaarn-character div.sheet-inventory input.sheet-inventory-encumbered:invalid ~ .repcontainer label {
+div.sheet-vaarn-character div.sheet-inventory input.sheet-inventory-encumbered[value="1"] ~ .repcontainer label {
   color: red !important;
 }
-div.sheet-vaarn-character div.sheet-inventory input.sheet-inventory-overloaded:invalid ~ .repcontainer label {
+div.sheet-vaarn-character div.sheet-inventory input.sheet-inventory-overloaded[value="1"] ~ .repcontainer label {
   font-style: italic;
 }
 div.sheet-vaarn-character div.sheet-inventory span.sheet-spacer {
