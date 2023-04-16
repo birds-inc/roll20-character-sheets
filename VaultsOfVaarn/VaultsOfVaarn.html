@@ -46,15 +46,15 @@
 
   <div class="labels">
     <label>&nbsp;</label></br>
-    <label>DEF</label></br>
     <label>BONUS</label></br>
+    <label>DEF</label></br>
     <label class="small">CYBERNETIC</label>
   </div>
 
   <div class="ability">
     <label>STR</label><br/>
-    <input type="number" min="3" max="20" name="attr_str_def"/><br/>
     <input type="number" min="1" max="10" name="attr_str_bonus"/><br/>
+    <input type="number" min="3" max="20" name="attr_str_def" readonly/><br/>
     <div class="sheet-auto-expand">
       <span name="attr_str_cybernetic"></span>
       <textarea spellcheck="false" name="attr_str_cybernetic"></textarea>
@@ -63,8 +63,8 @@
 
   <div class="ability">
     <label>DEX</label><br/>
-    <input type="number" min="3" max="20" name="attr_dex_def"/><br/>
     <input type="number" min="1" max="10" name="attr_dex_bonus"/><br/>
+    <input type="number" min="3" max="20" name="attr_dex_def" readonly/><br/>
     <div class="sheet-auto-expand">
       <span name="attr_dex_cybernetic"></span>
       <textarea spellcheck="false" name="attr_dex_cybernetic"></textarea>
@@ -73,8 +73,8 @@
 
   <div class="ability">
     <label>CON</label><br/>
-    <input type="number" min="3" max="20" name="attr_con_def"/><br/>
     <input type="number" min="1" max="10" name="attr_con_bonus"/><br/>
+    <input type="number" min="3" max="20" name="attr_con_def" readonly/><br/>
     <div class="sheet-auto-expand">
       <span name="attr_con_cybernetic"></span>
       <textarea spellcheck="false" name="attr_con_cybernetic"></textarea>
@@ -83,8 +83,8 @@
 
   <div class="ability">
     <label>INT</label><br/>
-    <input type="number" min="3" max="20" name="attr_int_def"/><br/>
     <input type="number" min="1" max="10" name="attr_int_bonus"/><br/>
+    <input type="number" min="3" max="20" name="attr_int_def" readonly/><br/>
     <div class="sheet-auto-expand">
       <span name="attr_int_cybernetic"></span>
       <textarea spellcheck="false" name="attr_int_cybernetic"></textarea>
@@ -93,8 +93,8 @@
 
   <div class="ability">
     <label>PSY</label><br/>
-    <input type="number" min="3" max="20" name="attr_psy_def"/><br/>
     <input type="number" min="1" max="10" name="attr_psy_bonus"/><br/>
+    <input type="number" min="3" max="20" name="attr_psy_def" readonly/><br/>
     <div class="sheet-auto-expand">
       <span name="attr_psy_cybernetic"></span>
       <textarea spellcheck="false" name="attr_psy_cybernetic"></textarea>
@@ -103,8 +103,8 @@
 
   <div class="ability">
     <label>EGO</label><br/>
-    <input type="number" min="3" max="20" name="attr_ego_def"/><br/>
     <input type="number" min="1" max="10" name="attr_ego_bonus"/><br/>
+    <input type="number" min="3" max="20" name="attr_ego_def" readonly/><br/>
     <div class="sheet-auto-expand">
       <span name="attr_ego_cybernetic"></span>
       <textarea spellcheck="false" name="attr_ego_cybernetic"></textarea>
@@ -139,7 +139,6 @@
   </div>
 </div>
 
-
 <script type="text/worker">
   let specialrules_map = {
     "truekin": "PURE OF BLOOD\nDo not roll mutations during character creation. You gain Advantage on reaction rolls when you encounter other true-kin. You lose this bonus if you ever become visibly mutated.\n\nINHERITOR\nWhenever you encounter pre-Collapse security systems or guard synths, there is a 50% chance that they will recognise you as their master.",
@@ -155,6 +154,19 @@
       let specialrules = specialrules_map[ancestry];
       setAttrs({
         "specialrules": specialrules
+      });
+    });
+  });
+
+  on("change:str_bonus change:dex_bonus change:con_bonus change:int_bonus change:psy_bonus change:ego_bonus sheet:opened", () => {
+    getAttrs(["str_bonus", "dex_bonus", "con_bonus", "int_bonus", "ego_bonus", "ego_bonus"], values => {
+      setAttrs({
+        "str_def": parseInt(values.str_bonus) + 10,
+        "dex_def": parseInt(values.dex_bonus) + 10,
+        "con_def": parseInt(values.con_bonus) + 10,
+        "int_def": parseInt(values.int_bonus) + 10,
+        "psy_def": parseInt(values.psy_bonus) + 10,
+        "ego_def": parseInt(values.ego_bonus) + 10,
       });
     });
   });
