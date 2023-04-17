@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Crimson+Text&display=swap");
-div, input, select, textarea {
+div, input, select, textarea, button {
   box-sizing: border-box;
 }
 
@@ -18,7 +18,7 @@ div {
   border: 0px solid black;
 }
 
-input, select, textarea {
+input, select, textarea, button {
   border: 1px solid gray;
 }
 
@@ -71,12 +71,12 @@ textarea {
   line-height: 12px !important;
 }
 
-label, input, select, textarea, span {
+label, input, select, textarea, span, button {
   display: inline-block;
-  margin-bottom: 5px;
+  margin-bottom: 5px !important;
 }
 
-label, input, select, textarea {
+label, input, select, textarea, button {
   vertical-align: top !important;
   height: 24px !important;
 }
@@ -205,6 +205,15 @@ div.sheet-vaarn-character div.sheet-ability input, div.sheet-vaarn-character div
 }
 div.sheet-vaarn-character div.sheet-ability input {
   padding-left: 15px;
+}
+div.sheet-vaarn-character div.sheet-ability button {
+  font-family: "Crimson Text", Arial;
+  font-size: 15px;
+  font-weight: 700;
+  color: rgb(32, 88, 141) !important;
+  text-align: center;
+  border-radius: 4px;
+  width: 46px;
 }
 div.sheet-vaarn-character div.sheet-notes {
   width: 800px;

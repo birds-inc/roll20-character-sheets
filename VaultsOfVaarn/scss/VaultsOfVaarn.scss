@@ -46,6 +46,7 @@ $div-ability-width: calc(($total-width - $div-labels-width) / 6) - 1px;
 
 $ability-input-width: $div-ability-width - $div-extra-width;
 $ability-input-padding: 15px;
+$ability-button-width: 46px;
 
 $item-label-width: 40px;
 $item-button-margin: 10px;
@@ -61,7 +62,7 @@ $item-name-width: $total-width - $div-extra-width - $item-label-width - $item-sp
 
 // BASIC ELEMENT CONFIG
 
-div, input, select, textarea { box-sizing: border-box; }
+div, input, select, textarea, button { box-sizing: border-box; }
 
 fieldset, div.repcontainer, div.repitem, div.repcontrol, div.itemcontrol {
   border: 0 !important;
@@ -74,7 +75,7 @@ fieldset, div.repcontainer, div.repitem, div.repcontrol, div.itemcontrol {
 // BORDERS
 
 div { border: $div-border-width solid black; }
-input, select, textarea { border: $input-border-width solid gray; }
+input, select, textarea, button { border: $input-border-width solid gray; }
 
 // BACKGROUND COLORS
 
@@ -104,12 +105,12 @@ textarea { line-height: $textarea-line-height !important; }
 
 // ELEMENT CONFIGURATION
 
-label, input, select, textarea, span {
+label, input, select, textarea, span, button {
   display: inline-block;
-  margin-bottom: $line-margin-bottom;
+  margin-bottom: $line-margin-bottom !important;
 }
  
-label, input, select, textarea {
+label, input, select, textarea, button {
   vertical-align: top !important;
   height: $line-height !important;
 }
@@ -227,6 +228,16 @@ div.sheet-vaarn-character {
     input, textarea    { width: $ability-input-width; }
     input {
       padding-left: $ability-input-padding;
+    }
+
+    button { 
+      font-family: 'Crimson Text', Arial;
+      font-size: $label-font-size;
+      font-weight: $label-font-weight;
+      color: $vaarn-blue !important;
+      text-align: center;
+      border-radius: 4px;
+      width: $ability-button-width;
     }
   }
 

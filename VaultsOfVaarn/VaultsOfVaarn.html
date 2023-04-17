@@ -47,14 +47,16 @@
   <div class="labels">
     <label>&nbsp;</label></br>
     <label>BONUS</label></br>
+    <label>PENALTY</label></br>
     <label>DEF</label></br>
     <label class="small">CYBERNETIC</label>
   </div>
 
   <div class="ability">
-    <label>STR</label><br/>
-    <input type="number" min="1" max="10" name="attr_str_bonus"/><br/>
-    <input type="number" min="3" max="20" name="attr_str_def" readonly/><br/>
+    <button type="action" name="act_str">STR</button><br/>
+    <input type="number" value="0" min="1" max="10" name="attr_str_bonus" required/><br/>
+    <input type="number" value="0" min="-20" max="0" name="attr_str_penalty" required/><br/>
+    <input type="number" value="10" min="3" max="20" name="attr_str_def" readonly required/><br/>
     <div class="sheet-auto-expand">
       <span name="attr_str_cybernetic"></span>
       <textarea spellcheck="false" name="attr_str_cybernetic"></textarea>
@@ -62,9 +64,10 @@
   </div>
 
   <div class="ability">
-    <label>DEX</label><br/>
-    <input type="number" min="1" max="10" name="attr_dex_bonus"/><br/>
-    <input type="number" min="3" max="20" name="attr_dex_def" readonly/><br/>
+    <button type="action" name="act_dex">DEX</button><br/>
+    <input type="number" value="0" min="1" max="10" name="attr_dex_bonus" required/><br/>
+    <input type="number" value="0" min="-20" max="0" name="attr_dex_penalty" required/><br/>
+    <input type="number" value="10" min="3" max="20" name="attr_dex_def" readonly required/><br/>
     <div class="sheet-auto-expand">
       <span name="attr_dex_cybernetic"></span>
       <textarea spellcheck="false" name="attr_dex_cybernetic"></textarea>
@@ -72,9 +75,10 @@
   </div>
 
   <div class="ability">
-    <label>CON</label><br/>
-    <input type="number" min="1" max="10" name="attr_con_bonus"/><br/>
-    <input type="number" min="3" max="20" name="attr_con_def" readonly/><br/>
+    <button type="action" name="act_con">CON</button><br/>
+    <input type="number" value="0" min="1" max="10" name="attr_con_bonus" required/><br/>
+    <input type="number" value="0" min="-20" max="0" name="attr_con_penalty" required/><br/>
+    <input type="number" value="10" min="3" max="20" name="attr_con_def" readonly required/><br/>
     <div class="sheet-auto-expand">
       <span name="attr_con_cybernetic"></span>
       <textarea spellcheck="false" name="attr_con_cybernetic"></textarea>
@@ -82,9 +86,10 @@
   </div>
 
   <div class="ability">
-    <label>INT</label><br/>
-    <input type="number" min="1" max="10" name="attr_int_bonus"/><br/>
-    <input type="number" min="3" max="20" name="attr_int_def" readonly/><br/>
+    <button type="action" name="act_int">INT</button><br/>
+    <input type="number" value="0" min="1" max="10" name="attr_int_bonus" required/><br/>
+    <input type="number" value="0" min="-20" max="0" name="attr_int_penalty" required/><br/>
+    <input type="number" value="10" min="3" max="20" name="attr_int_def" readonly required/><br/>
     <div class="sheet-auto-expand">
       <span name="attr_int_cybernetic"></span>
       <textarea spellcheck="false" name="attr_int_cybernetic"></textarea>
@@ -92,9 +97,10 @@
   </div>
 
   <div class="ability">
-    <label>PSY</label><br/>
-    <input type="number" min="1" max="10" name="attr_psy_bonus"/><br/>
-    <input type="number" min="3" max="20" name="attr_psy_def" readonly/><br/>
+    <button type="action" name="act_psy">PSY</button><br/>
+    <input type="number" value="0" min="1" max="10" name="attr_psy_bonus" required/><br/>
+    <input type="number" value="0" min="-20" max="0" name="attr_psy_penalty" required/><br/>
+    <input type="number" value="10" min="3" max="20" name="attr_psy_def" readonly required/><br/>
     <div class="sheet-auto-expand">
       <span name="attr_psy_cybernetic"></span>
       <textarea spellcheck="false" name="attr_psy_cybernetic"></textarea>
@@ -102,9 +108,10 @@
   </div>
 
   <div class="ability">
-    <label>EGO</label><br/>
-    <input type="number" min="1" max="10" name="attr_ego_bonus"/><br/>
-    <input type="number" min="3" max="20" name="attr_ego_def" readonly/><br/>
+    <button type="action" name="act_ego">EGO</button><br/>
+    <input type="number" value="0" min="1" max="10" name="attr_ego_bonus" required/><br/>
+    <input type="number" value="0" min="-20" max="0" name="attr_ego_penalty" required/><br/>
+    <input type="number" value="10" min="3" max="20" name="attr_ego_def" readonly required/><br/>
     <div class="sheet-auto-expand">
       <span name="attr_ego_cybernetic"></span>
       <textarea spellcheck="false" name="attr_ego_cybernetic"></textarea>
@@ -144,7 +151,40 @@
   </div>
 </div>
 
+<rolltemplate class="sheet-rolltemplate-ability">
+<div class="sheet-template-container">
+  <h1>{{name}}</h1>
+  <div class="sheet-results">
+    <h4>Roll = {{roll1}} + {{bonus}} - {{penalty}} = {{computed::roll1}}</h4>
+  </div>
+</div>
+</rolltemplate>
+
 <script type="text/worker">
+  function rollAbility(ability) {
+    const ability_bonus = ability + "_bonus";
+    const ability_penalty = ability + "_penalty";
+    getAttrs([ability_bonus, ability_penalty], values => {
+      const bonus = parseInt(values[ability_bonus]) || 0;
+      const penalty = parseInt(values[ability_penalty]) || 0;
+
+      startRoll("&{template:ability} {{name=" + ability.toUpperCase() + "}} {{bonus=" + bonus + "}} {{penalty=" + (-1*penalty) + "}} {{roll1=[[1d20]]}}", results => {
+        const raw_roll = parseInt(results.results.roll1.result);
+        const final_roll = raw_roll + bonus + penalty;
+        const computed = { "roll1": final_roll };
+
+        finishRoll(results.rollId, computed);
+      });
+    });
+  }
+
+  on("clicked:str", info => { rollAbility("str"); });
+  on("clicked:dex", info => { rollAbility("dex"); });
+  on("clicked:con", info => { rollAbility("con"); });
+  on("clicked:int", info => { rollAbility("int"); });
+  on("clicked:psy", info => { rollAbility("psy"); });
+  on("clicked:ego", info => { rollAbility("ego"); });
+
   let specialrules_map = {
     "truekin": "PURE OF BLOOD\nDo not roll mutations during character creation. You gain Advantage on reaction rolls when you encounter other true-kin. You lose this bonus if you ever become visibly mutated.\n\nINHERITOR\nWhenever you encounter pre-Collapse security systems or guard synths, there is a 50% chance that they will recognise you as their master.",
     "synth": "SYNTHETIC FLESH\nYou are a being of metal and plastic. You do not need to eat or breathe. You will never take damage from suffocation, drowning, poisons, extreme temperatures, or fungal spores. You suffer double damage from electrical weapons.\n\nSYNTHETIC MIND\nYou are vulnerable to attacks that target the LogLang syntax that powers synths. These include strobing basilisk patterns, malicious infoglyphs, and ancient Titan-era language viruses.",
@@ -163,15 +203,19 @@
     });
   });
 
-  on("change:str_bonus change:dex_bonus change:con_bonus change:int_bonus change:psy_bonus change:ego_bonus sheet:opened", () => {
-    getAttrs(["str_bonus", "dex_bonus", "con_bonus", "int_bonus", "psy_bonus", "ego_bonus"], values => {
+  on("change:str_bonus change:dex_bonus change:con_bonus change:int_bonus change:psy_bonus change:ego_bonus change:str_penalty change:dex_penalty change:con_penalty change:int_penalty change:psy_penalty change:ego_penalty sheet:opened", () => {
+    const attributes = [
+      "str_bonus", "dex_bonus", "con_bonus", "int_bonus", "psy_bonus", "ego_bonus",
+      "str_penalty", "dex_penalty", "con_penalty", "int_penalty", "psy_penalty", "ego_penalty",
+    ];
+    getAttrs(attributes, values => {
       setAttrs({
-        "str_def": parseInt(values.str_bonus) + 10,
-        "dex_def": parseInt(values.dex_bonus) + 10,
-        "con_def": parseInt(values.con_bonus) + 10,
-        "int_def": parseInt(values.int_bonus) + 10,
-        "psy_def": parseInt(values.psy_bonus) + 10,
-        "ego_def": parseInt(values.ego_bonus) + 10,
+        "str_def": parseInt(values.str_bonus) + parseInt(values.str_penalty) + 10,
+        "dex_def": parseInt(values.dex_bonus) + parseInt(values.dex_penalty) + 10,
+        "con_def": parseInt(values.con_bonus) + parseInt(values.con_penalty) + 10,
+        "int_def": parseInt(values.int_bonus) + parseInt(values.int_penalty) + 10,
+        "psy_def": parseInt(values.psy_bonus) + parseInt(values.psy_penalty) + 10,
+        "ego_def": parseInt(values.ego_bonus) + parseInt(values.ego_penalty) + 10,
       });
     });
   });
@@ -180,19 +224,12 @@
     getAttrs(["con_def"], values => {
       let con_def = values.con_def;
       let slot_attrs = [];
-      let type_attrs = [];
-      let type_map = {};
       let count = 0;
       let encumbered = 0;
       let overloaded = 0;
       let item_type = "";
 
       getSectionIDs("repeating_item", ids => {
-        // calculate item_types
-        ids.forEach(id => {
-          type_attrs.push("repeating_item_" + id + "_item_type");
-        });
-
         // calculate encumbrance
         ids.forEach(id => {
           slot_attrs.push("repeating_item_" + id + "_item_slots");
