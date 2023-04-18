@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Crimson+Text&display=swap');
 
-$total-width: 800px;
+$total-width: 840px;
 
 $label-font-size: 15px;
 $label-font-size-small: 14px;
@@ -127,9 +127,9 @@ select {
 
 .sheet-auto-expand {
   border: $input-border-width solid gray;
-	position: relative;
-	cursor: text;
-	word-wrap: break-word;
+  position: relative;
+  cursor: text;
+  word-wrap: break-word;
   min-height: $line-height;
   margin-bottom: $line-margin-bottom;
   line-height: $textarea-line-height;
