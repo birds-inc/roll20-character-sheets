@@ -226,7 +226,7 @@ div.sheet-vaarn-character div.sheet-item label {
   width: 40px;
 }
 div.sheet-vaarn-character div.sheet-item input.sheet-item-name {
-  width: 541px;
+  width: 512px;
 }
 div.sheet-vaarn-character div.sheet-item select.sheet-item-type {
   width: 80px;
@@ -238,7 +238,7 @@ div.sheet-vaarn-character div.sheet-item input.sheet-item-slots {
   margin-left: 5px;
 }
 div.sheet-vaarn-character div.sheet-item span.sheet-spacer {
-  width: 58px;
+  width: 87px;
 }
 div.sheet-vaarn-character div.sheet-item div.repcontainer {
   line-height: 10px;
@@ -306,7 +306,10 @@ div.sheet-vaarn-character div.sheet-item span.sheet-spacer button {
   box-sizing: border-box;
   float: right;
   margin-left: 5px;
+  margin-right: 0;
   border-radius: 4px;
+  padding-left: 3.5px;
+  padding-top: 3px;
 }
 div.sheet-vaarn-character div.sheet-item div.itemcontrol a, div.sheet-vaarn-character div.sheet-item div.itemcontrol button {
   height: 24px;

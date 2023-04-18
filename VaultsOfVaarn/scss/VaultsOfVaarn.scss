@@ -56,7 +56,7 @@ $item-slots-width: 60px;
 $item-slots-padding: 14px;
 $item-slots-padding-top: 2px;
 $item-type-width: 80px;
-$item-spacer-width: calc($line-height * 2) + calc($item-modify-margin * 2);
+$item-spacer-width: calc($line-height * 3) + calc($item-modify-margin * 3);
 $item-name-width: $total-width - $div-extra-width - $item-label-width - $item-spacer-width - $item-slots-width - $item-modify-margin - $item-type-width - $item-modify-margin - 1px;
 
 
@@ -314,7 +314,10 @@ div.sheet-vaarn-character {
       box-sizing: border-box;
       float: right;
       margin-left: $item-modify-margin;
+      margin-right: 0;
       border-radius: 4px;
+      padding-left: 3.5px;
+      padding-top: 3px;
     }
 
     div.itemcontrol {
