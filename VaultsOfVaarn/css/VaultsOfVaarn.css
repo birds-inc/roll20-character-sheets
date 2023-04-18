@@ -226,10 +226,14 @@ div.sheet-vaarn-character div.sheet-item label {
   width: 40px;
 }
 div.sheet-vaarn-character div.sheet-item input.sheet-item-name {
-  width: 512px;
+  width: 471px;
 }
 div.sheet-vaarn-character div.sheet-item select.sheet-item-type {
   width: 80px;
+  margin-left: 5px;
+}
+div.sheet-vaarn-character div.sheet-item select.sheet-item-die {
+  width: 36px;
   margin-left: 5px;
 }
 div.sheet-vaarn-character div.sheet-item input.sheet-item-slots {

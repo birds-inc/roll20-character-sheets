@@ -131,11 +131,18 @@
     <fieldset class="repeating_item">
       <input type="hidden" name="attr_item_slots" class="item-slots-hidden"/>
       <input type="hidden" name="attr_item_type" class="item-type-hidden"/>
-      <label></label><input type="text" name="attr_item_name" class="item-name"/><select name="attr_item_type" class="item-type">
+      <label></label><input type="text" name="attr_item_name" class="item-name"/><input type="number" name="attr_item_slots" class="item-slots" min="1" max="10" placeholder="slots"/><select name="attr_item_type" class="item-type">
         <option value="item">Item</option>
         <option value="gift">Mystic Gift</option>
         <option value="wound">Wound</option>
-      </select><input type="number" name="attr_item_slots" class="item-slots" min="1" max="10" placeholder="slots"/><span class="spacer"><button disabled>&nbsp;</button><button disabled>&nbsp;</button><button type="roll" class="roll-item" name="roll_item" value="/roll d20">&nbsp;</button></span>
+      </select><select name="attr_item_die" class="item-die">
+        <option value="d4">d4</option>
+        <option value="d6">d6</option>
+        <option value="d8">d8</option>
+        <option value="d10">d10</option>
+        <option value="d12">d12</option>
+        <option value="d20">d20</option>
+      </select><span class="spacer"><button disabled>&nbsp;</button><button disabled>&nbsp;</button><button type="roll" class="roll-item" name="roll_item" value="/roll d20">&nbsp;</button></span>
     </fieldset>
   </div>
 

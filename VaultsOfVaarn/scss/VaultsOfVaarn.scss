@@ -56,8 +56,9 @@ $item-slots-width: 60px;
 $item-slots-padding: 14px;
 $item-slots-padding-top: 2px;
 $item-type-width: 80px;
+$item-die-width: 36px;
 $item-spacer-width: calc($line-height * 3) + calc($item-modify-margin * 3);
-$item-name-width: $total-width - $div-extra-width - $item-label-width - $item-spacer-width - $item-slots-width - $item-modify-margin - $item-type-width - $item-modify-margin - 1px;
+$item-name-width: $total-width - $div-extra-width - $item-label-width - $item-spacer-width - $item-slots-width - $item-modify-margin - $item-type-width - $item-modify-margin - $item-die-width - $item-modify-margin - 1px;
 
 
 // BASIC ELEMENT CONFIG
@@ -258,6 +259,7 @@ div.sheet-vaarn-character {
     label { width: $item-label-width; }
     input.sheet-item-name { width: $item-name-width; }
     select.sheet-item-type { width: $item-type-width; margin-left: $item-modify-margin; }
+    select.sheet-item-die { width: $item-die-width; margin-left: $item-modify-margin; }
     input.sheet-item-slots { width: $item-slots-width; padding-left: $item-slots-padding; margin-left: $item-modify-margin; }
     span.sheet-spacer { width: $item-spacer-width; }
 
