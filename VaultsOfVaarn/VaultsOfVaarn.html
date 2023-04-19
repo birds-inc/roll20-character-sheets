@@ -160,10 +160,7 @@
 
 <rolltemplate class="sheet-rolltemplate-ability">
 <div class="sheet-template-container">
-  <h1>{{name}}</h1>
-  <div class="sheet-results">
-    <h4>Roll = {{roll1}} + {{bonus}} - {{penalty}} = {{computed::roll1}}</h4>
-  </div>
+  <h1>{{name}}: {{roll1}}</h1>
 </div>
 </rolltemplate>
 
@@ -171,14 +168,17 @@
   function rollAbility(ability) {
     const ability_bonus = ability + "_bonus";
     const ability_penalty = ability + "_penalty";
-    getAttrs([ability_bonus, ability_penalty], values => {
-      const bonus = parseInt(values[ability_bonus]) || 0;
-      const penalty = parseInt(values[ability_penalty]) || 0;
 
-      startRoll("&{template:ability} {{name=" + ability.toUpperCase() + "}} {{bonus=" + bonus + "}} {{penalty=" + (-1*penalty) + "}} {{roll1=[[1d20]]}}", results => {
+    getAttrs([ability_bonus, ability_penalty], values => {
+      const abilityDisplay = ability.toUpperCase();
+      const bonus = parseInt(values[ability_bonus]) || 0;
+      const penalty = -1 * parseInt(values[ability_penalty]) || 0;
+
+      const macro = "&{template:ability} {{name=" + abilityDisplay + "}} {{roll1=[[1d20 + " + bonus + " - " + penalty + "]]}}";
+
+      startRoll(macro, results => {
         const raw_roll = parseInt(results.results.roll1.result);
-        const final_roll = raw_roll + bonus + penalty;
-        const computed = { "roll1": final_roll };
+        const computed = { };
 
         finishRoll(results.rollId, computed);
       });
