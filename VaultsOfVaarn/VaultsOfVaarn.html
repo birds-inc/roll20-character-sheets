@@ -165,7 +165,7 @@
 </rolltemplate>
 
 <script type="text/worker">
-  function rollAbility(ability) {
+  function rollAbility(die, ability) {
     const ability_bonus = ability + "_bonus";
     const ability_penalty = ability + "_penalty";
 
@@ -174,7 +174,7 @@
       const bonus = parseInt(values[ability_bonus]) || 0;
       const penalty = -1 * parseInt(values[ability_penalty]) || 0;
 
-      const macro = "&{template:ability} {{name=" + abilityDisplay + "}} {{roll1=[[1d20 + " + bonus + " - " + penalty + "]]}}";
+      const macro = "&{template:ability} {{name=" + abilityDisplay + "}} {{roll1=[[" + die + " + " + bonus + " - " + penalty + "]]}}";
 
       startRoll(macro, results => {
         const raw_roll = parseInt(results.results.roll1.result);
@@ -185,12 +185,12 @@
     });
   }
 
-  on("clicked:str", info => { rollAbility("str"); });
-  on("clicked:dex", info => { rollAbility("dex"); });
-  on("clicked:con", info => { rollAbility("con"); });
-  on("clicked:int", info => { rollAbility("int"); });
-  on("clicked:psy", info => { rollAbility("psy"); });
-  on("clicked:ego", info => { rollAbility("ego"); });
+  on("clicked:str", info => { rollAbility("d20", "str"); });
+  on("clicked:dex", info => { rollAbility("d20", "dex"); });
+  on("clicked:con", info => { rollAbility("d20", "con"); });
+  on("clicked:int", info => { rollAbility("d20", "int"); });
+  on("clicked:psy", info => { rollAbility("d20", "psy"); });
+  on("clicked:ego", info => { rollAbility("d20", "ego"); });
 
   let specialrules_map = {
     "truekin": "PURE OF BLOOD\nDo not roll mutations during character creation. You gain Advantage on reaction rolls when you encounter other true-kin. You lose this bonus if you ever become visibly mutated.\n\nINHERITOR\nWhenever you encounter pre-Collapse security systems or guard synths, there is a 50% chance that they will recognise you as their master.",
