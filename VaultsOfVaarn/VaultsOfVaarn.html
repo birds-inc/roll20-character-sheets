@@ -129,14 +129,14 @@
     <input type="hidden" class="item-encumbered" name="attr_item_encumbered" max="0"/>
     <input type="hidden" class="item-overloaded" name="attr_item_overloaded" max="0"/>
     <fieldset class="repeating_item">
-      <input type="hidden" name="attr_item_slots" class="item-slots-hidden"/>
-      <input type="hidden" name="attr_item_type" class="item-type-hidden"/>
-      <input type="hidden" name="attr_item_die" class="item-die-hidden"/>
-      <label></label><input type="text" name="attr_item_name" class="item-name"/><input type="number" name="attr_item_slots" class="item-slots" min="1" max="10" placeholder="slots"/><select name="attr_item_type" class="item-type">
+      <input type="hidden" name="attr_slots" class="item-slots-hidden"/>
+      <input type="hidden" name="attr_type" class="item-type-hidden"/>
+      <input type="hidden" name="attr_die" class="item-die-hidden"/>
+      <label></label><input type="text" name="attr_name" class="item-name"/><input type="number" name="attr_slots" class="item-slots" min="1" max="10" placeholder="slots"/><select name="attr_type" class="item-type">
         <option value="item">Item</option>
         <option value="gift">Mystic Gift</option>
         <option value="wound">Wound</option>
-      </select><select name="attr_item_die" class="item-die">
+      </select><select name="attr_die" class="item-die">
         <option value="d4">d4</option>
         <option value="d6">d6</option>
         <option value="d8">d8</option>
@@ -219,8 +219,8 @@
   on("clicked:ego", info => { rollAbility("d20", "ego"); });
 
   on("clicked:repeating_item:item", info => {
-    getAttrs(["repeating_item_item_die"], values => {
-      rollItem(values.repeating_item_item_die, "Item");
+    getAttrs(["repeating_item_die"], values => {
+      rollItem(values.repeating_item_die, "Item");
     });
   });
 
