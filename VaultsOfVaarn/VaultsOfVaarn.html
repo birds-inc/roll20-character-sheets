@@ -209,10 +209,6 @@
     });
   }
 
-  function rollItem(die, item) {
-    roll("Item", item, dieMacro("roll1", die));
-  }
-
   function rollGift(die) {
     const ability = "psy";
     const ability_bonus = ability + "_bonus";
@@ -235,6 +231,14 @@
     });
   }
 
+  function rollItem(die, item) {
+    roll("Item", item, dieMacro("roll1", die));
+  }
+
+  function rollWound(die) {
+    roll("Wound", "Damage", dieMacro("roll1", die));
+  }
+
   on("clicked:str", info => { rollAbility("d20", "str"); });
   on("clicked:dex", info => { rollAbility("d20", "dex"); });
   on("clicked:con", info => { rollAbility("d20", "con"); });
@@ -252,7 +256,7 @@
           rollGift(values.repeating_item_die);
           break;
         case "wound":
-          rollItem(values.repeating_item_die, "Wound");
+          rollWound(values.repeating_item_die);
           break;
         default:
           rollItem(values.repeating_item_die, "Item");
