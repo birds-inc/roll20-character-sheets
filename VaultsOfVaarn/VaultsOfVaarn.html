@@ -173,7 +173,11 @@
 </rolltemplate>
 
 <script type="text/worker">
-  function rollMacro(name, die, bonus, penalty) {
+  function rollMacro(macro) {
+    startRoll(macro, results => { finishRoll(results.rollId); });
+  }
+
+  function dieMacro(name, die, bonus, penalty) {
     let macro = "{{" + name + "=[[" + die;
     if (bonus !== undefined) { macro += " + " + bonus; }
     if (penalty !== undefined) { macro += " - " + penalty; }
@@ -182,7 +186,15 @@
     return macro;
   }
 
-  function rollBasic(die, ability) {
+  function roll(name1, macro1, name2, macro2) {
+    if (name2 === undefined) {
+      return rollMacro("&{template:basic} {{name=" + name1 + "}} " + macro1);
+    } else {
+      return rollMacro("&{template:complex} {{name1=" + name1 + "}} " + macro1 + " {{name=" + name2 + "}} " + macro2);
+    }
+  }
+
+  function rollAbility(die, ability) {
     const ability_bonus = ability + "_bonus";
     const ability_penalty = ability + "_penalty";
 
@@ -191,28 +203,20 @@
       const bonus = parseInt(values[ability_bonus]) || 0;
       const penalty = -1 * parseInt(values[ability_penalty]) || 0;
 
-      const macro = "&{template:basic} {{name=" + abilityDisplay + "}} " + rollMacro("roll1", die, bonus, penalty);
-
-      startRoll(macro, results => {
-        finishRoll(results.rollId, {});
-      });
+      roll(abilityDisplay, dieMacro("roll1", die, bonus, penalty));
     });
   }
 
   function rollItem(die, item) {
-    const macro = "&{template:basic} {{name=" + item + "}} " + rollMacro("roll1", die, bonus, penalty);
-
-    startRoll(macro, results => {
-      finishRoll(results.rollId, {});
-    });
+    roll(item, dieMacro("roll1", die));
   }
 
-  on("clicked:str", info => { rollBasic("d20", "str"); });
-  on("clicked:dex", info => { rollBasic("d20", "dex"); });
-  on("clicked:con", info => { rollBasic("d20", "con"); });
-  on("clicked:int", info => { rollBasic("d20", "int"); });
-  on("clicked:psy", info => { rollBasic("d20", "psy"); });
-  on("clicked:ego", info => { rollBasic("d20", "ego"); });
+  on("clicked:str", info => { rollAbility("d20", "str"); });
+  on("clicked:dex", info => { rollAbility("d20", "dex"); });
+  on("clicked:con", info => { rollAbility("d20", "con"); });
+  on("clicked:int", info => { rollAbility("d20", "int"); });
+  on("clicked:psy", info => { rollAbility("d20", "psy"); });
+  on("clicked:ego", info => { rollAbility("d20", "ego"); });
 
   on("clicked:repeating_item:item", info => {
     getAttrs(["repeating_item_item_die"], values => {
