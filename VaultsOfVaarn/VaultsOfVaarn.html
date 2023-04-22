@@ -196,7 +196,7 @@
     }
   }
 
-  function rollAbility(die, ability) {
+  function rollAbility2(die, ability) {
     const ability_bonus = ability + "_bonus";
     const ability_penalty = ability + "_penalty";
 
@@ -209,8 +209,7 @@
     });
   }
 
-  function rollGift(die) {
-    const ability = "psy";
+  function rollAbility(ability, callback) {
     const ability_bonus = ability + "_bonus";
     const ability_penalty = ability + "_penalty";
 
@@ -218,6 +217,18 @@
       const bonus = parseInt(values[ability_bonus]) || 0;
       const penalty = -1 * parseInt(values[ability_penalty]) || 0;
 
+      callback(bonus, penalty);
+    });
+  }
+
+  function rollSave(die, ability) {
+    rollAbility(ability, (bonus, penalty) => {
+      roll("Ability Save", ability.toUpperCase(), dieMacro("roll1", die, bonus, penalty));
+    });
+  }
+
+  function rollGift(die) {
+    rollAbility(ability, (bonus, penalty) => {
       let nextDie = {
         "d4": "d6",
         "d6": "d8",
@@ -239,12 +250,12 @@
     roll("Wound", "Damage", dieMacro("roll1", die));
   }
 
-  on("clicked:str", info => { rollAbility("d20", "str"); });
-  on("clicked:dex", info => { rollAbility("d20", "dex"); });
-  on("clicked:con", info => { rollAbility("d20", "con"); });
-  on("clicked:int", info => { rollAbility("d20", "int"); });
-  on("clicked:psy", info => { rollAbility("d20", "psy"); });
-  on("clicked:ego", info => { rollAbility("d20", "ego"); });
+  on("clicked:str", info => { rollSave("d20", "str"); });
+  on("clicked:dex", info => { rollSave("d20", "dex"); });
+  on("clicked:con", info => { rollSave("d20", "con"); });
+  on("clicked:int", info => { rollSave("d20", "int"); });
+  on("clicked:psy", info => { rollSave("d20", "psy"); });
+  on("clicked:ego", info => { rollSave("d20", "ego"); });
 
   on("clicked:repeating_item:item", info => {
     getAttrs(["repeating_item_die", "repeating_item_type"], values => {
