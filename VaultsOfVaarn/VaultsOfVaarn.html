@@ -161,13 +161,15 @@
 
 <rolltemplate class="sheet-rolltemplate-basic">
 <div class="sheet-template-container">
-  <h1>{{name}}: {{roll1}}</h1>
+  <h1>{{title}}</h1>
+  <h2>{{name}}: {{roll1}}</h2>
 </div>
 </rolltemplate>
 
 <rolltemplate class="sheet-rolltemplate-complex">
 <div class="sheet-template-container">
-  <h1>{{name1}}: {{roll1}}</h1>
+  <h1>{{title}}</h1>
+  <h2>{{name1}}: {{roll1}}</h2>
   <h2>{{name2}}: {{roll2}}</h2>
 </div>
 </rolltemplate>
@@ -186,11 +188,11 @@
     return macro;
   }
 
-  function roll(name1, macro1, name2, macro2) {
+  function roll(title, name1, macro1, name2, macro2) {
     if (name2 === undefined) {
-      return rollMacro("&{template:basic} {{name=" + name1 + "}} " + macro1);
+      return rollMacro("&{template:basic} {{title=" + title + "}} {{name=" + name1 + "}} " + macro1);
     } else {
-      return rollMacro("&{template:complex} {{name1=" + name1 + "}} " + macro1 + " {{name2=" + name2 + "}} " + macro2);
+      return rollMacro("&{template:complex} {{title=" + title + "}} {{name1=" + name1 + "}} " + macro1 + " {{name2=" + name2 + "}} " + macro2);
     }
   }
 
@@ -203,12 +205,12 @@
       const bonus = parseInt(values[ability_bonus]) || 0;
       const penalty = -1 * parseInt(values[ability_penalty]) || 0;
 
-      roll(abilityDisplay, dieMacro("roll1", die, bonus, penalty));
+      roll("Ability Save", abilityDisplay, dieMacro("roll1", die, bonus, penalty));
     });
   }
 
   function rollItem(die, item) {
-    roll(item, dieMacro("roll1", die));
+    roll("Item", item, dieMacro("roll1", die));
   }
 
   function rollGift(die) {
@@ -229,7 +231,7 @@
         "d20": "d100",
       }[die];
 
-      roll("Mystic Gift", dieMacro("roll1", nextDie, bonus, penalty), "Cost", dieMacro("roll2", die));
+      roll("Mystic Gift", "Cost", dieMacro("roll1", die), "Effect", dieMacro("roll2", nextDie, bonus, penalty));
     });
   }
 
