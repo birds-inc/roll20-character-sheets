@@ -33,7 +33,7 @@ input, select, textarea {
 label, input[type=number], select, option {
   font-family: "Crimson Text", Arial;
   font-weight: 700;
-  color: rgb(32, 88, 141) !important;
+  color: #20588d !important;
   padding: 0;
   text-align: center;
 }
@@ -151,8 +151,8 @@ div.sheet-vaarn-character div.sheet-header label {
   margin: 0;
   padding-top: 5px;
   padding-bottom: 5px;
-  border-top: 1px solid rgb(32, 88, 141);
-  border-bottom: 1px solid rgb(32, 88, 141);
+  border-top: 1px solid #20588d;
+  border-bottom: 1px solid #20588d;
 }
 div.sheet-vaarn-character div.sheet-basics {
   float: left;
@@ -210,7 +210,7 @@ div.sheet-vaarn-character div.sheet-ability button {
   font-family: "Crimson Text", Arial;
   font-size: 15px;
   font-weight: 700;
-  color: rgb(32, 88, 141) !important;
+  color: #20588d !important;
   text-align: center;
   border-radius: 4px;
   width: 46px;
@@ -285,7 +285,7 @@ div.sheet-vaarn-character div.sheet-item input.sheet-item-slots-hidden[value="10
   counter-increment: item 10;
 }
 div.sheet-vaarn-character div.sheet-item input.sheet-item-encumbered[value="1"] ~ .repcontainer label {
-  color: red !important;
+  color: #9b1d20 !important;
 }
 div.sheet-vaarn-character div.sheet-item input.sheet-item-overloaded[value="1"] ~ .repcontainer label {
   font-style: italic;
@@ -298,10 +298,16 @@ div.sheet-vaarn-character div.sheet-item input.sheet-item-slots::placeholder {
   padding-top: 0;
 }
 div.sheet-vaarn-character div.sheet-item input.sheet-item-type-hidden[value=gift] ~ select.sheet-item-type {
-  color: green !important;
+  color: #558b5a !important;
 }
 div.sheet-vaarn-character div.sheet-item input.sheet-item-type-hidden[value=wound] ~ select.sheet-item-type {
-  color: red !important;
+  color: #9b1d20 !important;
+}
+div.sheet-vaarn-character div.sheet-item input.sheet-item-type-hidden[value=melee] ~ select.sheet-item-type {
+  color: #e08000 !important;
+}
+div.sheet-vaarn-character div.sheet-item input.sheet-item-type-hidden[value=ranged] ~ select.sheet-item-type {
+  color: #a315b9 !important;
 }
 div.sheet-vaarn-character div.sheet-item span.sheet-spacer button {
   height: 24px;
@@ -337,7 +343,7 @@ div.sheet-vaarn-character div.sheet-item div.repcontrol button {
   font-family: "Crimson Text", Arial;
   font-size: 15px;
   font-weight: 700;
-  color: rgb(32, 88, 141) !important;
+  color: #20588d !important;
   text-align: center;
   text-transform: uppercase;
   float: right;

@@ -134,6 +134,8 @@
       <input type="hidden" name="attr_die" class="item-die-hidden"/>
       <label></label><input type="text" name="attr_name" class="item-name"/><input type="number" name="attr_slots" class="item-slots" min="1" max="10" placeholder="slots"/><select name="attr_type" class="item-type">
         <option value="item">Item</option>
+        <option value="melee">Melee</option>
+        <option value="ranged">Ranged</option>
         <option value="gift">Mystic Gift</option>
         <option value="wound">Wound</option>
       </select><select name="attr_die" class="item-die">
@@ -196,19 +198,6 @@
     }
   }
 
-  function rollAbility2(die, ability) {
-    const ability_bonus = ability + "_bonus";
-    const ability_penalty = ability + "_penalty";
-
-    getAttrs([ability_bonus, ability_penalty], values => {
-      const abilityDisplay = ability.toUpperCase();
-      const bonus = parseInt(values[ability_bonus]) || 0;
-      const penalty = -1 * parseInt(values[ability_penalty]) || 0;
-
-      roll("Ability Save", abilityDisplay, dieMacro("roll1", die, bonus, penalty));
-    });
-  }
-
   function rollAbility(ability, callback) {
     const ability_bonus = ability + "_bonus";
     const ability_penalty = ability + "_penalty";
@@ -228,7 +217,7 @@
   }
 
   function rollGift(die) {
-    rollAbility(ability, (bonus, penalty) => {
+    rollAbility('psy', (bonus, penalty) => {
       let nextDie = {
         "d4": "d6",
         "d6": "d8",
@@ -239,6 +228,18 @@
       }[die];
 
       roll("Mystic Gift", "Cost", dieMacro("roll1", die), "Effect", dieMacro("roll2", nextDie, bonus, penalty));
+    });
+  }
+
+  function rollMelee(die) {
+    rollAbility("str", (bonus, penalty) => {
+      roll("Melee Attack", "To Hit", dieMacro("roll1", "d20", bonus, penalty), "Damage", dieMacro("roll2", die));
+    });
+  }
+
+  function rollRanged(die) {
+    rollAbility("dex", (bonus, penalty) => {
+      roll("Ranged Attack", "To Hit", dieMacro("roll1", "d20", bonus, penalty), "Damage", dieMacro("roll2", die));
     });
   }
 
@@ -268,6 +269,12 @@
           break;
         case "wound":
           rollWound(values.repeating_item_die);
+          break;
+        case "melee":
+          rollMelee(values.repeating_item_die);
+          break;
+        case "ranged":
+          rollRanged(values.repeating_item_die);
           break;
         default:
           rollItem(values.repeating_item_die, "Item");

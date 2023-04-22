@@ -9,10 +9,12 @@ $label-font-size-very-large: 22px;
 $label-font-weight: 700;
 $textarea-font-size: 13px;
 
-$vaarn-blue: rgb(32,88,141);
-$encumbered-red: red;
+$vaarn-blue: #20588d;
+$mystic-gift: #558b5a;
+$melee: #e08000;
+$ranged: #a315b9;
+$red: #9b1d20;
 $background-white: rgb(255, 255, 255);
-$mystic-gift-green: green;
 
 $line-height: 24px;
 $textarea-line-height: 12px;
@@ -289,7 +291,7 @@ div.sheet-vaarn-character {
     input.sheet-item-slots-hidden[value="9"] ~ label { counter-increment: item 9; }
     input.sheet-item-slots-hidden[value="10"] ~ label { counter-increment: item 10; }
 
-    input.sheet-item-encumbered[value="1"] ~ .repcontainer label { color: $encumbered-red !important; }
+    input.sheet-item-encumbered[value="1"] ~ .repcontainer label { color: $red !important; }
     input.sheet-item-overloaded[value="1"] ~ .repcontainer label { font-style: italic; }
 
     // SLOTS
@@ -304,8 +306,10 @@ div.sheet-vaarn-character {
 
     // TYPES
 
-    input.sheet-item-type-hidden[value="gift"] ~ select.sheet-item-type { color: $mystic-gift-green !important; }
-    input.sheet-item-type-hidden[value="wound"] ~ select.sheet-item-type { color: $encumbered-red !important; }
+    input.sheet-item-type-hidden[value="gift"] ~ select.sheet-item-type { color: $mystic-gift !important; }
+    input.sheet-item-type-hidden[value="wound"] ~ select.sheet-item-type { color: $red !important; }
+    input.sheet-item-type-hidden[value="melee"] ~ select.sheet-item-type { color: $melee !important; }
+    input.sheet-item-type-hidden[value="ranged"] ~ select.sheet-item-type { color: $ranged !important; }
 
     // ITEM BUTTONS
 
