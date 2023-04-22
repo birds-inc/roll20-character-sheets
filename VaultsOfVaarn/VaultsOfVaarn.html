@@ -219,8 +219,20 @@
   on("clicked:ego", info => { rollAbility("d20", "ego"); });
 
   on("clicked:repeating_item:item", info => {
-    getAttrs(["repeating_item_die"], values => {
-      rollItem(values.repeating_item_die, "Item");
+    getAttrs(["repeating_item_die", "repeating_item_type"], values => {
+      switch(values.repeating_item_type) {
+        case "item":
+          rollItem(values.repeating_item_die, "Item");
+          break;
+        case "gift":
+          rollItem(values.repeating_item_die, "Mystic Gift");
+          break;
+        case "wound":
+          rollItem(values.repeating_item_die, "Wound");
+          break;
+        default:
+          rollItem(values.repeating_item_die, "Item");
+      }
     });
   });
 
