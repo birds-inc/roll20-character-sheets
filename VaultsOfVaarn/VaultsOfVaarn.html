@@ -190,7 +190,7 @@
     if (name2 === undefined) {
       return rollMacro("&{template:basic} {{name=" + name1 + "}} " + macro1);
     } else {
-      return rollMacro("&{template:complex} {{name1=" + name1 + "}} " + macro1 + " {{name=" + name2 + "}} " + macro2);
+      return rollMacro("&{template:complex} {{name1=" + name1 + "}} " + macro1 + " {{name2=" + name2 + "}} " + macro2);
     }
   }
 
@@ -211,6 +211,28 @@
     roll(item, dieMacro("roll1", die));
   }
 
+  function rollGift(die) {
+    const ability = "psy";
+    const ability_bonus = ability + "_bonus";
+    const ability_penalty = ability + "_penalty";
+
+    getAttrs([ability_bonus, ability_penalty], values => {
+      const bonus = parseInt(values[ability_bonus]) || 0;
+      const penalty = -1 * parseInt(values[ability_penalty]) || 0;
+
+      let nextDie = {
+        "d4": "d6",
+        "d6": "d8",
+        "d8": "d10",
+        "d10": "d12",
+        "d12": "d20",
+        "d20": "d100",
+      }[die];
+
+      roll("Mystic Gift", dieMacro("roll1", nextDie, bonus, penalty), "Cost", dieMacro("roll2", die));
+    });
+  }
+
   on("clicked:str", info => { rollAbility("d20", "str"); });
   on("clicked:dex", info => { rollAbility("d20", "dex"); });
   on("clicked:con", info => { rollAbility("d20", "con"); });
@@ -225,7 +247,7 @@
           rollItem(values.repeating_item_die, "Item");
           break;
         case "gift":
-          rollItem(values.repeating_item_die, "Mystic Gift");
+          rollGift(values.repeating_item_die);
           break;
         case "wound":
           rollItem(values.repeating_item_die, "Wound");
