@@ -188,6 +188,7 @@ div.sheet-vaarn-character div.sheet-bio input[type=number] {
 }
 div.sheet-vaarn-character div.sheet-bio div.sheet-auto-expand {
   margin-top: 10px;
+  text-align: left;
 }
 div.sheet-vaarn-character div.sheet-labels {
   float: left;

@@ -138,33 +138,33 @@ select {
   font-size: $textarea-font-size;
 }
 .sheet-auto-expand span {
-	visibility: hidden;
-	white-space: pre-wrap;
-	display: block;
+  visibility: hidden;
+  white-space: pre-wrap;
+  display: block;
   margin: 0;
 }
 .sheet-auto-expand textarea {
-	position: absolute;
-	z-index: 1;
-	top: 0;
-	left: 0;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
   min-height: $line-height !important;
-	overflow: hidden;
-	resize: none;
-	height: 100% !important;
-	width: 100% !important;
-	display: block;
-	box-sizing: border-box;
-	background: transparent;
-	border: none;
-	border-radius: 0;
-	box-shadow: none;
-	color: inherit;
-	font: inherit;
-	letter-spacing: inherit;
-	padding: inherit;
-	text-align: inherit;
-	text-transform: inherit;
+  overflow: hidden;
+  resize: none;
+  height: 100% !important;
+  width: 100% !important;
+  display: block;
+  box-sizing: border-box;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  padding: inherit;
+  text-align: inherit;
+  text-transform: inherit;
   font-size: inherit;
 }
 
@@ -215,7 +215,7 @@ div.sheet-vaarn-character {
     label                 { width: $bio-label-width; }
     span.sheet-spacer     { width: $bio-spacer-width; }
     input[type="number"]  { width: $bio-input-width; padding-left: $bio-input-padding; }
-    div.sheet-auto-expand { margin-top: $bio-textarea-margin; }
+    div.sheet-auto-expand { margin-top: $bio-textarea-margin; text-align: left; }
   }
 
   // ABILITIES
