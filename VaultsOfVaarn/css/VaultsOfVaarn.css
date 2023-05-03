@@ -219,6 +219,15 @@ div.sheet-vaarn-character div.sheet-ability button {
 div.sheet-vaarn-character div.sheet-notes {
   width: 840px;
 }
+div.sheet-vaarn-character div.sheet-macros button {
+  font-family: "Crimson Text", Arial;
+  font-size: 15px;
+  font-weight: 700;
+  color: #20588d !important;
+  text-align: center;
+  border-radius: 4px;
+  margin-right: 10px;
+}
 div.sheet-vaarn-character div.sheet-item {
   width: 840px;
   counter-reset: item;

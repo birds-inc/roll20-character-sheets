@@ -62,6 +62,7 @@ $item-die-width: 36px;
 $item-spacer-width: calc($line-height * 3) + calc($item-modify-margin * 3);
 $item-name-width: $total-width - $div-extra-width - $item-label-width - $item-spacer-width - $item-slots-width - $item-modify-margin - $item-type-width - $item-modify-margin - $item-die-width - $item-modify-margin - 1px;
 
+$macro-button-margin: 10px;
 
 // BASIC ELEMENT CONFIG
 
@@ -248,6 +249,20 @@ div.sheet-vaarn-character {
 
   div.sheet-notes {
     width: $total-width;
+  }
+
+  // MACROS
+
+  div.sheet-macros {
+    button {
+      font-family: 'Crimson Text', Arial;
+      font-size: $label-font-size;
+      font-weight: $label-font-weight;
+      color: $vaarn-blue !important;
+      text-align: center;
+      border-radius: 4px;
+      margin-right: $macro-button-margin;
+    }
   }
 
   // ITEMS
