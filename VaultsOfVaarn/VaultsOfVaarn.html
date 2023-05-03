@@ -186,6 +186,19 @@
 </div>
 </rolltemplate>
 
+<rolltemplate class="sheet-rolltemplate-newpc">
+<div class="sheet-template-container newpc">
+  <h1>New PC</h1>
+  <h3>STR: {{str}}</h3>
+  <h3>DEX: {{dex}}</h3>
+  <h3>CON: {{con}}</h3>
+  <h3>INT: {{int}}</h3>
+  <h3>PSY: {{psy}}</h3>
+  <h3>EGO: {{ego}}</h3>
+  <h3>HP: {{hp}}</h3>
+</div>
+</rolltemplate>
+
 <script type="text/worker">
   function rollMacro(macro) {
     startRoll(macro, results => { finishRoll(results.rollId); });
@@ -261,6 +274,10 @@
     roll("Wound", "Damage", dieMacro("roll1", die));
   }
 
+  function rollNewPC() {
+    return rollMacro("&{template:newpc} {{str=[[3d6kl1]]}} {{dex=[[3d6kl1]]}} {{con=[[3d6kl1]]}} {{int=[[3d6kl1]]}} {{psy=[[3d6kl1]]}} {{ego=[[3d6kl1]]}} {{hp=[[1d8]]}}");
+  }
+
   on("clicked:str", info => { rollSave("d20", "str"); });
   on("clicked:dex", info => { rollSave("d20", "dex"); });
   on("clicked:con", info => { rollSave("d20", "con"); });
@@ -291,6 +308,8 @@
       }
     });
   });
+
+  on("clicked:newpc", info => { rollNewPC(); });
 
   let specialrules_map = {
     "truekin": "PURE OF BLOOD\nDo not roll mutations during character creation. You gain Advantage on reaction rolls when you encounter other true-kin. You lose this bonus if you ever become visibly mutated.\n\nINHERITOR\nWhenever you encounter pre-Collapse security systems or guard synths, there is a 50% chance that they will recognise you as their master.",
