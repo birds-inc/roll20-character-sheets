@@ -167,7 +167,7 @@
   <div class="macros">
     <button type="action" name="act_newpc">NEW PC</button>
     <button type="action" name="act_shortrest">SHORT REST</button>
-    <button type="action" name="act_shortrest">LEVEL UP</button>
+    <button type="action" name="act_levelup">LEVEL UP</button>
   </div>
 </div>
 
@@ -284,6 +284,10 @@
     });
   }
 
+  function rollLevelUp() {
+    roll("Level Up", "Max HP Gained", dieMacro("roll1", "d8"));
+  }
+
   on("clicked:str", info => { rollSave("d20", "str"); });
   on("clicked:dex", info => { rollSave("d20", "dex"); });
   on("clicked:con", info => { rollSave("d20", "con"); });
@@ -317,6 +321,7 @@
 
   on("clicked:newpc", info => { rollNewPC(); });
   on("clicked:shortrest", info => { rollShortRest(); });
+  on("clicked:levelup", info => { rollLevelUp(); });
 
   let specialrules_map = {
     "truekin": "PURE OF BLOOD\nDo not roll mutations during character creation. You gain Advantage on reaction rolls when you encounter other true-kin. You lose this bonus if you ever become visibly mutated.\n\nINHERITOR\nWhenever you encounter pre-Collapse security systems or guard synths, there is a 50% chance that they will recognise you as their master.",
